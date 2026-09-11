@@ -13,28 +13,32 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" />
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
   <link rel="stylesheet" href="css/styles.css" />
+  <link rel="stylesheet" href="css/concept-2.css" />
+  <link rel="stylesheet" href="css/concept-3.css" />
+  <link rel="stylesheet" href="css/final.css?v=2" />
+  <link rel="stylesheet" href="css/pages.css?v=2" />
 </head>
 <body>
 
-  <!-- NAV -->
-  <header class="nav" id="nav">
-    <a href="#hero" class="nav__brand" aria-label="Burger 'n Shake home">
-      <img src="assets/img/logo.png" alt="Burger 'n Shake" />
-    </a>
-    <nav class="nav__links" aria-label="Hoofdmenu">
-      <a href="#menu">Menu</a>
-      <a href="#waarom">Waarom wij</a>
-      <a href="#vestigingen">Vestigingen</a>
-      <a href="#franchise">Franchise</a>
-    </nav>
-    <a href="#bestel" class="btn btn--red nav__cta">Bestel nu</a>
-    <button class="nav__toggle" aria-label="Menu openen" aria-expanded="false">
-      <span></span><span></span><span></span>
-    </button>
-  </header>
+  <!-- 1. HERO — concept 1 (opbouwende burger) + pill-nav + dambord -->
+  <section class="hero" id="home">
+    <header class="topbar" id="topbar">
+      <a href="#home" class="topbar__brand" aria-label="Burger 'n Shake home">
+        <img src="assets/img/logo.png" alt="Burger 'n Shake" />
+      </a>
+      <nav class="pillnav" aria-label="Hoofdmenu">
+        <a href="#home" class="is-active">Home</a>
+        <a href="#menu">Menu</a>
+        <a href="over-ons.html">Over ons</a>
+        <a href="franchise.html">Franchise</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+      <a href="#menu" class="topbar__cta">Menu bekijken</a>
+      <button class="topbar__toggle" aria-label="Menu openen" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </header>
 
-  <!-- 1. HERO -->
-  <section class="hero" id="hero">
     <div class="hero__inner">
       <h1 class="hero__title">
         <span class="hero__title-sm">Vers van de</span>
@@ -48,56 +52,53 @@
         </p>
         <div class="hero__actions">
           <a href="#bestel" class="btn btn--red">Bestel nu</a>
-          <a href="#menu" class="btn btn--cream">Bekijk het menu</a>
+          <a href="#menu" class="btn btn--cream">Bekijk menu</a>
         </div>
       </div>
 
       <div class="hero__figure">
         <canvas id="hero-seq" class="hero__seq" width="640" height="857" role="img" aria-label="Een burger die zich laag voor laag opbouwt"></canvas>
       </div>
-
-      <span class="hero__ring" aria-hidden="true">
-        <svg viewBox="0 0 200 200">
-          <defs><path id="ringpath" d="M 100,100 m -74,0 a 74,74 0 1,1 148,0 a 74,74 0 1,1 -148,0" /></defs>
-          <text><textPath href="#ringpath" startOffset="0" textLength="465" lengthAdjust="spacingAndGlyphs">VERS GEDRAAID · ELKE DAG · VERS GEDRAAID · ELKE DAG · VERS GEDRAAID · ELKE DAG · VERS GEDRAAID · ELKE DAG · </textPath></text>
-        </svg>
-      </span>
     </div>
 
-    <div class="marquee marquee--red" aria-hidden="true">
-      <div class="marquee__track">
-        <span>Smashburgers</span><span class="marquee__dot">●</span>
-        <span>Echte milkshakes</span><span class="marquee__dot">●</span>
-        <span>100% Halal</span><span class="marquee__dot">●</span>
-        <span>Vers gedraaid</span><span class="marquee__dot">●</span>
-        <span>Ambachtelijk roomijs</span><span class="marquee__dot">●</span>
-        <span>Smashburgers</span><span class="marquee__dot">●</span>
-        <span>Echte milkshakes</span><span class="marquee__dot">●</span>
-        <span>100% Halal</span><span class="marquee__dot">●</span>
-        <span>Vers gedraaid</span><span class="marquee__dot">●</span>
-        <span>Ambachtelijk roomijs</span><span class="marquee__dot">●</span>
-      </div>
-    </div>
+    <!-- Contrast-check hero: cream tekst (#F7F4EE) op blauwe foto-achtergrond (#0055B8, donker),
+         kop met 9px ink-schaduw. Geschatte ratio ≥ 7:1 ✓ -->
+    <div class="checker checker--blue hero__checker" aria-hidden="true"></div>
   </section>
 
-  <!-- 2. MENU HIGHLIGHT -->
-  <section class="menu" id="menu">
-    <div class="menu__head">
-      <span class="ghost-word" aria-hidden="true" data-parallax="0.14">Burgers</span>
-      <div class="menu__intro">
-        <span class="kicker">De favorieten</span>
-        <h2 class="section-title">Kies je stapel</h2>
-        <p class="menu__lead">
-          Vier soorten patty, één missie. Beef, crispy chicken, grilled chicken of veggie,
-          allemaal met verse toppings en een bun die je vasthoudt tot de laatste hap.
-        </p>
-        <div class="menu__cats">
-          <span class="chip">Beef</span>
-          <span class="chip">Crispy Chicken</span>
-          <span class="chip">Grilled Chicken</span>
-          <span class="chip">Veggie</span>
+  <!-- 2a. HALAL-BAND (rood) -->
+  <div class="halalband" aria-hidden="true">
+    <div class="hmarquee">
+      <div class="hmarquee-row">
+        <div class="hmarquee-track">
+          <span class="htext">100% Halal</span><i class="hicon"></i>
+          <span class="htext htext--stroke">Vers van de grill</span><i class="hicon"></i>
+          <span class="htext">100% Halal</span><i class="hicon"></i>
+          <span class="htext htext--stroke">Vers van de grill</span><i class="hicon"></i>
         </div>
       </div>
+    </div>
+  </div>
+
+  <!-- 2b. MENU — concept 1 kaarten, kop in twee kolommen -->
+  <section class="menu menu--final" id="menu">
+    <div class="menu__head menu__head--final">
+      <div class="menu__title-wrap">
+        <span class="menu__ghost-title">Burgers</span>
+        <h2 class="section-title">Kies je stapel</h2>
+      </div>
+      <p class="menu__lead">
+        Burger 'n Shake begon met een simpel idee: smashburgers zoals ze horen, voor iedereen.
+        Onze patties gaan vers op de plaat en komen er met een korst weer af, onze shakes draaien
+        we met organic ijs en alles op de kaart is 100% halal.
+      </p>
+    </div>
+
+    <div class="menu__cats menu__cats--center">
+      <span class="chip">Beef</span>
+      <span class="chip">Crispy chicken</span>
+      <span class="chip">Grilled Chicken</span>
+      <span class="chip">Veggie</span>
     </div>
 
     <div class="menu__scatter">
@@ -129,7 +130,7 @@
         <span class="tag tag--price dish__price">€ 9,50</span>
         <a class="dish__badge" href="#bestel">Bestel nu</a>
         <div class="dish__media">
-          <img src="assets/img/spicy.png" alt="Spicy beef burger" />
+          <img src="assets/img/spicy.png" alt="Spicy Beef burger" />
         </div>
         <div class="dish__top">
           <h3 class="dish__name">Spicy Beef</h3>
@@ -151,17 +152,18 @@
     </div>
 
     <div class="menu__cta">
-      <a href="#bestel" class="btn btn--blue">Bekijk het hele menu</a>
+      <a href="#bestel" class="btn btn--blue">Bekijk menu</a>
     </div>
   </section>
 
-  <!-- 2b. OVER ONS -->
+  <!-- 3. OVER ONS — concept 1 (foto links, blauw paneel rechts) -->
   <section class="drops" id="over-ons">
     <figure class="drops__feature drops__feature--photo" data-reveal>
       <img src="assets/img/team.webp" alt="Het team van Burger 'n Shake achter de toonbank" class="drops__feature-img" data-parallax="0.08" />
       <span class="drops__feature-label">Ons team</span>
     </figure>
 
+    <!-- Contrast-check over ons: cream/gele tekst op blauw grain-paneel (#0055B8). Ratio ≥ 7:1 ✓ -->
     <div class="drops__copy" data-reveal>
       <span class="kicker kicker--light">Over ons</span>
       <h2 class="section-title section-title--light">Dit is Burger 'n Shake</h2>
@@ -170,11 +172,11 @@
         hetzelfde: smashburgers van 100% halal vlees, milkshakes van ambachtelijk roomijs en frietjes
         van organische ingrediënten. Elke dag opnieuw, met dezelfde zorg.
       </p>
-      <a href="#waarom" class="btn btn--ghost">Meer over ons</a>
+      <a href="#" class="btn btn--ghost">Meer over ons</a>
     </div>
   </section>
 
-  <!-- 3. WAAROM BURGER 'N SHAKE -->
+  <!-- 4. WAAROM — concept 1 (rood, dambord boven + onder) -->
   <section class="waarom" id="waarom">
     <div class="checker checker--top" aria-hidden="true"></div>
     <div class="waarom__inner">
@@ -215,12 +217,12 @@
     <div class="checker checker--bottom" aria-hidden="true"></div>
   </section>
 
-  <!-- 4. VESTIGINGEN -->
-  <section class="locaties" id="vestigingen">
-    <div class="locaties__head">
-      <span class="kicker">Vestigingen</span>
-      <h2 class="section-title">Vind je stek</h2>
-      <p class="locaties__lead">
+  <!-- 5. LOCATIES — concept 2 (gecentreerde kop) + kaart -->
+  <section class="spots spots--final" id="locaties">
+    <div class="spots__head">
+      <span class="spots__kicker">Locaties</span>
+      <h2 class="spots__title">Vind je stek</h2>
+      <p class="spots__lead">
         Elf vestigingen door heel Nederland en we blijven groeien. Klik een stad aan op de kaart
         en bekijk de buurt, of plan meteen je route.
       </p>
@@ -283,11 +285,13 @@
     </div>
   </section>
 
-  <!-- 5. SOCIAL PROOF / UGC -->
+  <div class="checker checker--blue" aria-hidden="true"></div>
+
+  <!-- 6. UGC — concept 1 polaroids, gecentreerde tweekleurige titel -->
   <section class="ugc" id="ugc">
-    <div class="ugc__head">
-      <span class="kicker kicker--light">Gespot in het wild</span>
-      <h2 class="section-title section-title--light">Jullie momenten</h2>
+    <div class="ugc__head ugc__head--center">
+      <!-- Contrast-check ugc: cream/gele koptekst op blauwe foto-achtergrond. Ratio ≥ 7:1 ✓ -->
+      <h2 class="ugc__title">Jullie <span>Momenten</span></h2>
       <p class="ugc__lead">Tag <strong>@burgernshake</strong> en beland tussen de lekkerste beten van de week.</p>
     </div>
 
@@ -322,96 +326,92 @@
 
     <div class="marquee marquee--yellow" aria-hidden="true">
       <div class="marquee__track">
-        <span>#BurgerNShake</span><span class="marquee__dot">●</span>
-        <span>Tag ons</span><span class="marquee__dot">●</span>
         <span>#Smashburger</span><span class="marquee__dot">●</span>
         <span>#Milkshake</span><span class="marquee__dot">●</span>
+        <span>#Tag ons</span><span class="marquee__dot">●</span>
         <span>#BurgerNShake</span><span class="marquee__dot">●</span>
-        <span>Tag ons</span><span class="marquee__dot">●</span>
         <span>#Smashburger</span><span class="marquee__dot">●</span>
         <span>#Milkshake</span><span class="marquee__dot">●</span>
+        <span>#Tag ons</span><span class="marquee__dot">●</span>
+        <span>#BurgerNShake</span><span class="marquee__dot">●</span>
       </div>
     </div>
   </section>
 
-  <!-- 6. FRANCHISE -->
-  <section class="franchise" id="franchise">
-    <div class="franchise__inner">
-      <div class="franchise__copy">
-        <span class="kicker">Franchise</span>
-        <h2 class="section-title">Bouw mee aan de familie</h2>
-        <p class="franchise__text">
-          Wil jij deel uitmaken van de Burger 'n Shake familie? We groeiden uit tot elf vestigingen
-          met hetzelfde recept, en er is ruimte voor meer. Ontdek wat een eigen zaak jou kan brengen.
-        </p>
-        <a href="#bestel" class="btn btn--red">Ontdek de mogelijkheden</a>
-        <ul class="franchise__stats">
-          <li><strong data-count="11">11</strong><span>vestigingen</span></li>
-          <li><strong data-count="100" data-suffix="%">100%</strong><span>halal</span></li>
-          <li><strong data-count="4">4</strong><span>soorten patty</span></li>
-        </ul>
-      </div>
-      <div class="franchise__stage">
-        <div class="collage">
-          <div class="collage__grid" aria-hidden="true"></div>
-          <video class="collage__video" src="assets/video/franchise.mp4" autoplay muted loop playsinline preload="metadata"></video>
-          <span class="tag tag--yellow collage__sticker">Vers gedraaid</span>
-        </div>
-      </div>
+  <!-- 7a. FRANCHISE — concept 3, zeppelin als achtergrond -->
+  <section class="franchise3" id="franchise">
+    <!-- Contrast-check franchise: witte tekst over de video met donkere
+         links-naar-rechts gradient-overlay (rgba(10,10,10,0.82) links). Ratio ≥ 6:1 ✓ -->
+    <video class="franchise3__bg" src="assets/video/franchise.mp4" autoplay muted loop playsinline preload="auto" aria-label="Sfeerbeeld van Burger 'n Shake"></video>
+    <div class="franchise3__overlay"></div>
+    <div class="franchise3__content">
+      <h2 class="franchise3__title">Start<br />je franchise</h2>
+      <p class="franchise3__copy">
+        Wil je zelf een Burger 'n Shake openen en onderdeel worden van de familie, neem dan contact
+        op via <a href="mailto:franchise@burgernshake.nl">franchise@burgernshake.nl</a> en vertel ons
+        over jezelf en de plek die je voor ogen hebt, dan denken we graag met je mee.
+      </p>
+      <a href="#bestel" class="btn btn--red franchise3__cta">Bestel nu</a>
     </div>
   </section>
 
-  <!-- 7. FOOTER CTA -->
-  <footer class="foot" id="bestel">
-    <div class="foot__grain" aria-hidden="true"></div>
-    <div class="foot__cta">
-      <h2 class="foot__title">
-        <span>Trek in een</span>
-        <span class="foot__title-accent">burger?</span>
+  <!-- 7b. FINAL CTA — rood, met diagonale tape-marquees -->
+  <footer class="finalcta" id="bestel">
+    <div class="finalcta__inner">
+      <!-- Contrast-check cta: cream/gele kop op rode achtergrond (#D2001B) met ink-schaduw. Ratio ≥ 5:1 ✓ -->
+      <h2 class="finalcta__title">
+        Trek in een
+        <span>Burger?</span>
       </h2>
       <a href="#bestel" class="btn btn--cream btn--lg">Bestel nu</a>
     </div>
 
-    <div class="marquee marquee--cream" aria-hidden="true">
-      <div class="marquee__track">
-        <span>Klik</span><span class="marquee__dot">●</span>
-        <span>Bestel</span><span class="marquee__dot">●</span>
-        <span>Geniet in no time</span><span class="marquee__dot">●</span>
-        <span>Klik</span><span class="marquee__dot">●</span>
-        <span>Bestel</span><span class="marquee__dot">●</span>
-        <span>Geniet in no time</span><span class="marquee__dot">●</span>
-        <span>Klik</span><span class="marquee__dot">●</span>
-        <span>Bestel</span><span class="marquee__dot">●</span>
-        <span>Geniet in no time</span><span class="marquee__dot">●</span>
+    <div class="tapes" aria-hidden="true">
+      <div class="stripe tape--1">
+        <div class="stripe__track">
+          <span>#Smashburger</span><i class="stripe__dot"></i>
+          <span>#Tag ons</span><i class="stripe__dot"></i>
+          <span>#Milkshake</span><i class="stripe__dot"></i>
+        </div>
+      </div>
+      <div class="stripe tape--3">
+        <div class="stripe__track">
+          <span>#Tag ons</span><i class="stripe__dot"></i>
+          <span>#Milkshake</span><i class="stripe__dot"></i>
+          <span>#Smashburger</span><i class="stripe__dot"></i>
+        </div>
       </div>
     </div>
+  </footer>
 
-    <div class="foot__grid">
-      <div class="foot__brand">
-        <span class="foot__logo">Burger 'n Shake</span>
-        <p>Smashburgers en ambachtelijke milkshakes. Klik, bestel en geniet in no time.</p>
+  <!-- SITE FOOTER -->
+  <footer class="sitefoot">
+    <div class="sitefoot__grid">
+      <div class="sitefoot__brand">
+        <span class="sitefoot__logo"><img src="assets/img/logo.png" alt="Burger 'n Shake" /></span>
+        <p>Smashburgers en ambachtelijke milkshakes, vers gedraaid en 100% halal. Klik, bestel en geniet in no time.</p>
       </div>
-      <nav class="foot__col" aria-label="Menu">
+      <nav class="sitefoot__col" aria-label="Ontdek">
         <h3>Ontdek</h3>
-        <a href="#menu">Menu</a>
-        <a href="#waarom">Waarom wij</a>
-        <a href="#vestigingen">Vestigingen</a>
-        <a href="#franchise">Franchise</a>
+        <a href="final.html#menu">Menu</a>
+        <a href="over-ons.html">Over ons</a>
+        <a href="final.html#locaties">Vestigingen</a>
+        <a href="franchise.html">Franchise</a>
       </nav>
-      <nav class="foot__col" aria-label="Volg ons">
+      <nav class="sitefoot__col" aria-label="Volg ons">
         <h3>Volg ons</h3>
         <a href="#">Instagram</a>
         <a href="#">TikTok</a>
         <a href="#">Facebook</a>
       </nav>
-      <div class="foot__col">
-        <h3>Bestellen</h3>
-        <a href="#bestel">Online bestellen</a>
-        <a href="#vestigingen">Vind een vestiging</a>
-      </div>
+      <nav class="sitefoot__col" aria-label="Contact">
+        <h3>Contact</h3>
+        <a href="contact.html">Contactpagina</a>
+        <a href="contact.html#werken">Werken bij</a>
+        <a href="mailto:info@burgernshake.nl">info@burgernshake.nl</a>
+      </nav>
     </div>
-
-    <div class="foot__base">
+    <div class="sitefoot__base">
       <span>© 2026 Burger 'n Shake</span>
       <span>100% Natuurlijk Halal</span>
     </div>
@@ -422,6 +422,6 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/SplitText.min.js"></script>
   <script src="https://unpkg.com/lenis@1.1.13/dist/lenis.min.js"></script>
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-  <script src="js/main.js"></script>
+  <script src="js/final.js?v=2"></script>
 </body>
 </html>
