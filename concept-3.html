@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Burger 'n Shake — Concept 3</title>
+  <meta name="description" content="Smashburgers zoals ze horen. 100% halal, vers van de grill." />
+  <link rel="preconnect" href="https://use.typekit.net" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://use.typekit.net/eqx1zww.css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" />
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <link rel="stylesheet" href="css/styles.css" />
+  <link rel="stylesheet" href="css/concept-2.css" />
+  <link rel="stylesheet" href="css/concept-3.css" />
+</head>
+<body class="c3">
+
+  <!-- HERO -->
+  <section class="hero3" id="hero3">
+    <div class="checker" aria-hidden="true"></div>
+
+    <header class="topbar" id="topbar">
+      <a href="#hero3" class="topbar__brand" aria-label="Burger 'n Shake home">
+        <img src="assets/img/logo.png" alt="Burger 'n Shake" />
+      </a>
+      <nav class="pillnav" aria-label="Hoofdmenu">
+        <a href="#hero3">Home</a>
+        <a href="#menu">Menu</a>
+        <a href="#over-ons">Over ons</a>
+        <a href="#locaties">Locaties</a>
+      </nav>
+      <a href="#menu" class="topbar__cta">Menu bekijken</a>
+      <button class="topbar__toggle" aria-label="Menu openen" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </header>
+
+    <div class="hero3__inner">
+      <h1 class="hero3__head" aria-label="Smashburgers zoals ze horen">
+        <img class="hero3__art" src="assets/img/hero-headline.png" alt="Smashburgers zoals ze horen" />
+      </h1>
+      <div class="hero3__actions">
+        <a href="#bestel" class="btn btn--yellow">Bestel nu</a>
+        <a href="#menu" class="btn btn--cream">Bekijk menu</a>
+      </div>
+    </div>
+
+    <div class="hero3__gallery" aria-hidden="true">
+      <div class="hero3__gallery-track">
+        <div class="hero3__ph"><img src="assets/img/brand/brand-1.jpg" alt="" /></div>
+        <div class="hero3__ph"><img src="assets/img/brand/brand-8.jpg" alt="" /></div>
+        <div class="hero3__ph"><img src="assets/img/brand/brand-3.jpg" alt="" /></div>
+        <div class="hero3__ph"><img src="assets/img/brand/brand-6.jpg" alt="" /></div>
+        <div class="hero3__ph"><img src="assets/img/brand/brand-2.jpg" alt="" /></div>
+        <div class="hero3__ph"><img src="assets/img/brand/brand-7.jpg" alt="" /></div>
+        <div class="hero3__ph"><img src="assets/img/brand/brand-4.jpg" alt="" /></div>
+        <div class="hero3__ph"><img src="assets/img/brand/brand-5.jpg" alt="" /></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HALAL MARQUEE (blauw) -->
+  <div class="c3-halalband">
+    <div class="hmarquee" aria-hidden="true">
+      <div class="hmarquee-row">
+        <div class="hmarquee-track">
+          <span class="htext">100% Halal</span><i class="hicon"></i>
+          <span class="htext htext--stroke">Vers van de grill</span><i class="hicon"></i>
+          <span class="htext">100% Halal</span><i class="hicon"></i>
+          <span class="htext htext--stroke">Vers van de grill</span><i class="hicon"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ONS MENU (wit) -->
+  <section class="menu2" id="menu">
+    <div class="menu2__head">
+      <span class="menu2__ghost" aria-hidden="true">#Menu</span>
+      <h2 class="menu2__title">Bekijk ons menu</h2>
+      <div class="menu2__cats">
+        <button class="menu2__cat is-active" type="button">Beef</button>
+        <button class="menu2__cat" type="button">Crispy chicken</button>
+        <button class="menu2__cat" type="button">Grilled Chicken</button>
+        <button class="menu2__cat" type="button">Veggie</button>
+      </div>
+    </div>
+
+    <div class="menu2__carousel">
+      <div class="menu2__viewport">
+        <div class="menu2__track" id="menu2-track">
+          <article class="mcard">
+            <div class="mcard__media"><span class="mcard__price">€ 9,50</span><img class="mcard__img" src="assets/img/beef-oldschool.png" alt="Beef Old School burger" /></div>
+            <h3 class="mcard__name">Beef Old School</h3>
+            <p class="mcard__desc">Smashed beef, augurk, rode ui en huissaus.</p>
+          </article>
+          <article class="mcard">
+            <div class="mcard__media"><span class="mcard__price">€ 9,95</span><img class="mcard__img" src="assets/img/beef-silence.png" alt="Beef Silence burger" /></div>
+            <h3 class="mcard__name">Beef Silence</h3>
+            <p class="mcard__desc">Smashed beef, gegrilde rode ui, tomaat en huissaus.</p>
+          </article>
+          <article class="mcard">
+            <div class="mcard__media"><span class="mcard__price">€ 9,50</span><img class="mcard__img" src="assets/img/crispy-oldschool.png" alt="Crispy Old School burger" /></div>
+            <h3 class="mcard__name">Crispy Old School</h3>
+            <p class="mcard__desc">Krokante kip, augurk, rode ui en pittige mayo.</p>
+          </article>
+          <article class="mcard">
+            <div class="mcard__media"><span class="mcard__price">€ 9,95</span><img class="mcard__img" src="assets/img/grilled-ginger.png" alt="Grilled Ginger burger" /></div>
+            <h3 class="mcard__name">Grilled Ginger</h3>
+            <p class="mcard__desc">Gegrilde kip, gember, sla en frisse yoghurtsaus.</p>
+          </article>
+          <article class="mcard">
+            <div class="mcard__media"><span class="mcard__price">€ 9,50</span><img class="mcard__img" src="assets/img/spicy.png" alt="Spicy Beef burger" /></div>
+            <h3 class="mcard__name">Spicy Beef</h3>
+            <p class="mcard__desc">Smashed beef met pit, jalapeño en rode ui.</p>
+          </article>
+          <article class="mcard">
+            <div class="mcard__media"><span class="mcard__price">€ 9,95</span><img class="mcard__img" src="assets/img/crispy-silence.png" alt="Crispy Silence burger" /></div>
+            <h3 class="mcard__name">Crispy Silence</h3>
+            <p class="mcard__desc">Krokante kip, tomaat, knapperige sla en huissaus.</p>
+          </article>
+          <article class="mcard">
+            <div class="mcard__media"><span class="mcard__price">€ 9,50</span><img class="mcard__img" src="assets/img/grilled-oldschool.png" alt="Grilled Old School burger" /></div>
+            <h3 class="mcard__name">Grilled Old School</h3>
+            <p class="mcard__desc">Gegrilde kip, augurk, tomaat en knapperige sla.</p>
+          </article>
+        </div>
+      </div>
+      <div class="menu2__nav">
+        <button class="menu2__arrow menu2__arrow--prev" type="button" aria-label="Vorige burger">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 12H4"/><path d="M10 6l-6 6 6 6"/></svg>
+        </button>
+        <button class="menu2__arrow menu2__arrow--next" type="button" aria-label="Volgende burger">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12h16"/><path d="M14 6l6 6-6 6"/></svg>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <div class="checker" aria-hidden="true"></div>
+
+  <!-- STORY — OVER ONS (blauw) -->
+  <section class="story" id="over-ons">
+    <div class="story__frames" aria-hidden="true">
+      <span class="story__frame story__frame--tl"><img src="assets/img/brand/brand-1.jpg" alt="" loading="lazy" /></span>
+      <span class="story__frame story__frame--tr"><img src="assets/img/brand/brand-6.jpg" alt="" loading="lazy" /></span>
+      <span class="story__frame story__frame--bl"><img src="assets/img/brand/brand-8.jpg" alt="" loading="lazy" /></span>
+      <span class="story__frame story__frame--br"><img src="assets/img/brand/brand-3.jpg" alt="" loading="lazy" /></span>
+    </div>
+    <div class="story__inner">
+      <h2 class="story__title">
+        <span class="story__title-line story__title-line--stroke">Het verhaal</span>
+        <span class="story__title-line story__title-line--fill">Achter de grill</span>
+      </h2>
+      <div class="story__copy">
+        <p>
+          Burger 'n Shake begon met een simpel idee: smashburgers zoals ze horen, voor iedereen.
+          Onze patties gaan vers op de plaat en komen er met een korst weer af, onze shakes draaien
+          we met organic ijs en alles op de kaart is 100% halal.
+        </p>
+        <p>
+          Wat begon als één zaak groeit inmiddels stad voor stad, maar het gevoel blijft hetzelfde:
+          je loopt binnen bij een spot die van de buurt is.
+        </p>
+      </div>
+      <a href="#" class="btn btn--cream">Meer lezen</a>
+    </div>
+  </section>
+
+  <!-- VESTIGINGEN — VIND JE STEK (wit) -->
+  <section class="spots" id="locaties">
+    <div class="spots__head">
+      <span class="spots__kicker">Locaties</span>
+      <h2 class="spots__title">Vind je stek</h2>
+      <p class="spots__lead">
+        Elf vestigingen door heel Nederland en we blijven groeien. Klik een stad aan op de kaart
+        en bekijk de buurt, of plan meteen je route.
+      </p>
+    </div>
+    <div class="locaties__board">
+      <aside class="locaties__panel">
+        <div class="locaties__panel-head">
+          <span class="locaties__count">11 vestigingen</span>
+          <input type="search" class="locaties__search" id="loc-search" placeholder="Zoek vestiging" aria-label="Zoek vestiging" autocomplete="off" />
+        </div>
+        <ul class="loc-list" id="loc-list">
+          <li><button class="loc-item" type="button" data-name="Amsterdam Oostpoort" data-street="Land van Cocagneplein 1D" data-zip="1093 NB Amsterdam" data-phone="020 221 28 56" data-lat="52.3583" data-lng="4.9290"><span class="loc-item__city">Oostpoort</span><span class="loc-item__area">Amsterdam · Land van Cocagneplein 1D</span></button></li>
+          <li><button class="loc-item" type="button" data-name="Amsterdam Westerpark" data-street="Van Limburg Stirumstraat 24A" data-zip="1051 BC Amsterdam" data-phone="020 237 16 35" data-lat="52.3830" data-lng="4.8770"><span class="loc-item__city">Westerpark</span><span class="loc-item__area">Amsterdam · Van Limburg Stirumstraat 24A</span></button></li>
+          <li><button class="loc-item" type="button" data-name="Amsterdam Noord" data-street="Hagedoornweg 65" data-zip="1031 BP Amsterdam" data-phone="06 45 40 83 70" data-lat="52.3905" data-lng="4.9190"><span class="loc-item__city">Noord</span><span class="loc-item__area">Amsterdam · Hagedoornweg 65</span></button></li>
+          <li><button class="loc-item" type="button" data-name="Amsterdam Osdorp" data-street="Osdorpplein 47" data-zip="1068 EK Amsterdam" data-phone="020 802 00 80" data-lat="52.3576" data-lng="4.8079"><span class="loc-item__city">Osdorp</span><span class="loc-item__area">Amsterdam · Osdorpplein 47</span></button></li>
+          <li><button class="loc-item" type="button" data-name="Zaandam" data-street="Hermitage 12" data-zip="1506 TX Zaandam" data-phone="075 202 10 57" data-lat="52.4405" data-lng="4.8175"><span class="loc-item__city">Zaandam</span><span class="loc-item__area">Hermitage 12</span></button></li>
+          <li><button class="loc-item" type="button" data-name="Almere" data-street="Grote Markt 51" data-zip="1315 JC Almere" data-phone="036 785 41 40" data-lat="52.3752" data-lng="5.2210"><span class="loc-item__city">Almere</span><span class="loc-item__area">Grote Markt 51</span></button></li>
+          <li><button class="loc-item" type="button" data-name="Leiden" data-street="Steenstraat 22" data-zip="2312 BW Leiden" data-phone="071 240 00 13" data-lat="52.1618" data-lng="4.4835"><span class="loc-item__city">Leiden</span><span class="loc-item__area">Steenstraat 22</span></button></li>
+          <li><button class="loc-item" type="button" data-name="Den Haag" data-street="Stationsweg 140a" data-zip="2515 BS Den Haag" data-phone="06 23 26 70 58" data-lat="52.0755" data-lng="4.3235"><span class="loc-item__city">Den Haag</span><span class="loc-item__area">Stationsweg 140a</span></button></li>
+          <li><button class="loc-item" type="button" data-name="Rotterdam" data-street="Hoogstraat 143" data-zip="3011 PM Rotterdam" data-phone="06 190 503 79" data-lat="51.9218" data-lng="4.4875"><span class="loc-item__city">Rotterdam</span><span class="loc-item__area">Hoogstraat 143</span></button></li>
+          <li><button class="loc-item" type="button" data-name="Zoetermeer" data-street="Burg. van Leeuwenpassage 25" data-zip="2711 JV Zoetermeer" data-phone="079 360 62 05" data-lat="52.0575" data-lng="4.4930"><span class="loc-item__city">Zoetermeer</span><span class="loc-item__area">Burg. van Leeuwenpassage 25</span></button></li>
+          <li><button class="loc-item" type="button" data-name="Amstelveen" data-street="Stadsplein 89" data-zip="1181 ZM Amstelveen" data-phone="06 31 91 28 72" data-lat="52.3075" data-lng="4.8620"><span class="loc-item__city">Amstelveen</span><span class="loc-item__area">Stadsplein 89</span></button></li>
+        </ul>
+      </aside>
+      <div class="locaties__map" id="loc-map" role="application" aria-label="Kaart met de vestigingen van Burger 'n Shake"></div>
+    </div>
+  </section>
+
+  <!-- JULLIE MOMENTEN (rood) -->
+  <section class="tok" id="ugc">
+    <span class="tok__bgword" aria-hidden="true">#BurgersNShake</span>
+    <div class="tok__head">
+      <span class="tok__kicker">Gespot in het wild</span>
+      <h2 class="tok__title">Jullie momenten</h2>
+    </div>
+    <div class="tok__marquee">
+      <div class="tok__track">
+        <figure class="tokcard"><div class="tokcard__slot"><video src="assets/ugc/ugc-1.mp4" autoplay muted loop playsinline preload="metadata"></video></div><figcaption>#burgernshake</figcaption></figure>
+        <figure class="tokcard"><div class="tokcard__slot"><video src="assets/ugc/ugc-2.mp4" autoplay muted loop playsinline preload="metadata"></video></div><figcaption>@eetnou</figcaption></figure>
+        <figure class="tokcard"><div class="tokcard__slot"><video src="assets/ugc/ugc-3.mp4" autoplay muted loop playsinline preload="metadata"></video></div><figcaption>@robinskitchennn</figcaption></figure>
+        <figure class="tokcard"><div class="tokcard__slot"><video src="assets/ugc/ugc-4.mp4" autoplay muted loop playsinline preload="metadata"></video></div><figcaption>@whitneyvalerie</figcaption></figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- gele hashtag-marquee -->
+  <div class="stripe stripe--yellow" aria-hidden="true">
+    <div class="stripe__track">
+      <span>#Smashburger</span><i class="stripe__dot"></i>
+      <span>#Milkshake</span><i class="stripe__dot"></i>
+      <span>#Tag ons</span><i class="stripe__dot"></i>
+      <span>#BurgerNShake</span><i class="stripe__dot"></i>
+    </div>
+  </div>
+
+  <!-- FRANCHISE (video als achtergrond) -->
+  <section class="franchise3" id="franchise">
+    <video class="franchise3__bg" src="assets/video/franchise.mp4" autoplay muted loop playsinline preload="metadata"></video>
+    <div class="franchise3__overlay"></div>
+    <div class="franchise3__content">
+      <h2 class="franchise3__title">Start<br />je franchise</h2>
+      <p class="franchise3__copy">
+        Wil je zelf een Burger 'n Shake openen en onderdeel worden van de familie, neem dan contact
+        op via <a href="mailto:franchise@burgernshake.nl">franchise@burgernshake.nl</a> en vertel ons
+        over jezelf en de plek die je voor ogen hebt, dan denken we graag met je mee.
+      </p>
+    </div>
+  </section>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/ScrollTrigger.min.js"></script>
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script src="js/concept-2.js"></script>
+  <script src="js/concept-3.js"></script>
+</body>
+</html>

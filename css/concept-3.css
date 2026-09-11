@@ -1,0 +1,181 @@
+/* ============================================================
+   BURGER 'N SHAKE — CONCEPT 3
+   Nieuwe hero + video-franchise, en achtergrond-overrides op de
+   herbruikte concept-2 secties. Laadt NA concept-2.css.
+   ============================================================ */
+
+/* ============================================================
+   HERO 3 — rode achtergrond, koptekst als marquee
+   ============================================================ */
+.hero3 {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-height: 100svh;
+  background: url("../assets/img/bg-red.jpg") center / cover no-repeat, var(--red);
+  color: var(--cream);
+  overflow: hidden;
+}
+/* nav loopt in de flow, onder de checker */
+.hero3 .topbar { position: static; }
+
+.hero3__inner {
+  position: relative;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: clamp(20px, 4vh, 48px) 0 clamp(16px, 3vh, 32px);
+}
+
+/* kop als één afbeelding (Smashburgers zoals ze horen) */
+.hero3__head {
+  position: relative;
+  z-index: 2;
+  margin: 0;
+  padding: 0 clamp(20px, 4vw, 64px);
+  text-align: center;
+}
+.hero3__art { display: block; width: min(94%, 1240px); height: auto; margin: 0 auto; }
+
+.hero3__actions {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  margin-top: clamp(28px, 5vh, 60px);
+}
+
+/* fotogalerij onderaan de hero, schuift mee op scroll */
+.hero3__gallery { position: relative; z-index: 1; overflow: hidden; padding-bottom: clamp(20px, 4vh, 48px); }
+.hero3__gallery-track { display: flex; gap: clamp(12px, 1.4vw, 22px); will-change: transform; }
+.hero3__ph {
+  flex: 0 0 auto;
+  width: clamp(190px, 17vw, 300px);
+  aspect-ratio: 3 / 4;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 14px 22px rgba(0, 0, 0, 0.3);
+}
+.hero3__ph img { display: block; width: 100%; height: 100%; object-fit: cover; }
+
+/* ============================================================
+   MENU op wit (override van concept-2 .menu2)
+   ============================================================ */
+.c3-halalband {
+  background: url("../assets/img/bg-blue.jpg") center / cover no-repeat, var(--blue);
+  padding: clamp(16px, 2.2vw, 30px) 0;
+  overflow: hidden;
+}
+.c3-halalband .hmarquee { margin: 0; }
+
+.c3 .menu2 { background: #fff; color: var(--ink); padding-top: clamp(48px, 7vw, 90px); }
+.c3 .menu2__head { position: relative; padding-top: clamp(34px, 4vw, 60px); }
+.c3 .menu2__ghost {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  transform: translateX(-54%) rotate(-4deg);
+  font-family: var(--font-head);
+  font-weight: 700;
+  font-size: clamp(1.6rem, 3.6vw, 2.6rem);
+  text-transform: uppercase;
+  color: transparent;
+  -webkit-text-stroke: 2px var(--red);
+  white-space: nowrap;
+  pointer-events: none;
+  z-index: 0;
+}
+.c3 .menu2__title { position: relative; z-index: 1; color: var(--ink); margin-top: 0; }
+.c3 .menu2__cat {
+  color: var(--red);
+  background: transparent;
+  border: 2px solid var(--red);
+  border-radius: 999px;
+  padding: 10px 22px;
+}
+.c3 .menu2__cat:hover { color: var(--cream); background: var(--red); }
+.c3 .menu2__cat.is-active { color: var(--cream); background: var(--red); }
+.c3 .mcard__name { color: var(--ink); }
+.c3 .mcard__desc { color: rgba(10, 10, 10, 0.7); }
+/* witte kaart-frame achter de middelste burger */
+.c3 .mcard.is-center .mcard__media {
+  background: #fff;
+  border: 2px solid var(--ink);
+  border-radius: 20px;
+  box-shadow: 8px 10px 0 rgba(10, 10, 10, 0.14);
+}
+.c3 .mcard.is-center .mcard__media { padding: 10px; }
+
+/* ============================================================
+   STORY op blauw + geel blok (override van concept-2 .story)
+   ============================================================ */
+.c3 .story {
+  background: url("../assets/img/bg-blue.jpg") center / cover no-repeat, var(--blue);
+}
+.c3 .story__title-line--stroke { -webkit-text-stroke-color: var(--cream); }
+.c3 .story__title-line--fill { background: var(--yellow); color: var(--ink); }
+.c3 .story__copy { color: rgba(247, 244, 238, 0.92); }
+
+/* ============================================================
+   UGC — gele hashtag-marquee onder de polaroids
+   ============================================================ */
+.stripe--yellow { background: var(--yellow); }
+.stripe--yellow .stripe__track span { color: var(--ink); }
+.stripe--yellow .stripe__dot { background: var(--ink); }
+
+/* ============================================================
+   FRANCHISE — video als achtergrond
+   ============================================================ */
+.franchise3 {
+  position: relative;
+  display: flex;
+  align-items: center;
+  min-height: clamp(560px, 80vh, 860px);
+  padding: clamp(48px, 8vw, 120px) clamp(20px, 5vw, 90px);
+  overflow: hidden;
+  color: var(--cream);
+  background: var(--ink);
+}
+.franchise3__bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+}
+.franchise3__overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: linear-gradient(90deg, rgba(10, 10, 10, 0.82) 0%, rgba(10, 10, 10, 0.5) 45%, rgba(10, 10, 10, 0.1) 100%);
+}
+.franchise3__content { position: relative; z-index: 2; max-width: 720px; }
+.franchise3__title {
+  font-family: var(--font-head);
+  font-weight: 700;
+  font-size: clamp(3rem, 9vw, 8rem);
+  line-height: 0.9;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+  color: var(--cream);
+}
+.franchise3__copy {
+  margin: clamp(20px, 3vw, 34px) 0 0;
+  max-width: 46ch;
+  font-family: "Roboto", var(--font-body);
+  font-size: clamp(0.98rem, 1.1vw, 1.15rem);
+  line-height: 1.7;
+  color: rgba(247, 244, 238, 0.92);
+}
+.franchise3__copy a { font-weight: 700; color: var(--yellow); text-decoration: underline; text-underline-offset: 3px; }
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+@media (max-width: 900px) {
+  .hero3__burger { width: 34vw; }
+  .hero3__word { font-size: clamp(2.4rem, 13vw, 6rem); }
+}

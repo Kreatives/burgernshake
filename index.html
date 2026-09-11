@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Burger 'n Shake — Smashburgers & ambachtelijke milkshakes</title>
+  <meta name="description" content="Smashburgers van 100% halal vlees en milkshakes van ambachtelijk roomijs. Elf vestigingen door heel Nederland. Klik, bestel en geniet in no time." />
+  <link rel="preconnect" href="https://use.typekit.net" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://use.typekit.net/eqx1zww.css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" />
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+
+  <!-- NAV -->
+  <header class="nav" id="nav">
+    <a href="#hero" class="nav__brand" aria-label="Burger 'n Shake home">
+      <img src="assets/img/logo.png" alt="Burger 'n Shake" />
+    </a>
+    <nav class="nav__links" aria-label="Hoofdmenu">
+      <a href="#menu">Menu</a>
+      <a href="#waarom">Waarom wij</a>
+      <a href="#vestigingen">Vestigingen</a>
+      <a href="#franchise">Franchise</a>
+    </nav>
+    <a href="#bestel" class="btn btn--red nav__cta">Bestel nu</a>
+    <button class="nav__toggle" aria-label="Menu openen" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </header>
+
+  <!-- 1. HERO -->
+  <section class="hero" id="hero">
+    <div class="hero__inner">
+      <h1 class="hero__title">
+        <span class="hero__title-sm">Vers van de</span>
+        <span class="hero__title-xl">Bakplaat</span>
+      </h1>
+
+      <div class="hero__foot">
+        <p class="hero__sub">
+          Smashburgers van 100% halal vlees, op de bakplaat gedraaid tot een krokante korst.
+          Milkshakes van ambachtelijk roomijs, dik geschept en romig tot de laatste slok.
+        </p>
+        <div class="hero__actions">
+          <a href="#bestel" class="btn btn--red">Bestel nu</a>
+          <a href="#menu" class="btn btn--cream">Bekijk het menu</a>
+        </div>
+      </div>
+
+      <div class="hero__figure">
+        <canvas id="hero-seq" class="hero__seq" width="640" height="857" role="img" aria-label="Een burger die zich laag voor laag opbouwt"></canvas>
+      </div>
+
+      <span class="hero__ring" aria-hidden="true">
+        <svg viewBox="0 0 200 200">
+          <defs><path id="ringpath" d="M 100,100 m -74,0 a 74,74 0 1,1 148,0 a 74,74 0 1,1 -148,0" /></defs>
+          <text><textPath href="#ringpath" startOffset="0" textLength="465" lengthAdjust="spacingAndGlyphs">VERS GEDRAAID · ELKE DAG · VERS GEDRAAID · ELKE DAG · VERS GEDRAAID · ELKE DAG · VERS GEDRAAID · ELKE DAG · </textPath></text>
+        </svg>
+      </span>
+    </div>
+
+    <div class="marquee marquee--red" aria-hidden="true">
+      <div class="marquee__track">
+        <span>Smashburgers</span><span class="marquee__dot">●</span>
+        <span>Echte milkshakes</span><span class="marquee__dot">●</span>
+        <span>100% Halal</span><span class="marquee__dot">●</span>
+        <span>Vers gedraaid</span><span class="marquee__dot">●</span>
+        <span>Ambachtelijk roomijs</span><span class="marquee__dot">●</span>
+        <span>Smashburgers</span><span class="marquee__dot">●</span>
+        <span>Echte milkshakes</span><span class="marquee__dot">●</span>
+        <span>100% Halal</span><span class="marquee__dot">●</span>
+        <span>Vers gedraaid</span><span class="marquee__dot">●</span>
+        <span>Ambachtelijk roomijs</span><span class="marquee__dot">●</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- 2. MENU HIGHLIGHT -->
+  <section class="menu" id="menu">
+    <div class="menu__head">
+      <span class="ghost-word" aria-hidden="true" data-parallax="0.14">Burgers</span>
+      <div class="menu__intro">
+        <span class="kicker">De favorieten</span>
+        <h2 class="section-title">Kies je stapel</h2>
+        <p class="menu__lead">
+          Vier soorten patty, één missie. Beef, crispy chicken, grilled chicken of veggie,
+          allemaal met verse toppings en een bun die je vasthoudt tot de laatste hap.
+        </p>
+        <div class="menu__cats">
+          <span class="chip">Beef</span>
+          <span class="chip">Crispy Chicken</span>
+          <span class="chip">Grilled Chicken</span>
+          <span class="chip">Veggie</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="menu__scatter">
+      <article class="dish" data-drift="0.06">
+        <span class="tag tag--price dish__price">€ 9,95</span>
+        <a class="dish__badge" href="#bestel">Bestel nu</a>
+        <div class="dish__media">
+          <img src="assets/img/beef-silence.png" alt="Beef Silence burger" />
+        </div>
+        <div class="dish__top">
+          <h3 class="dish__name">Beef Silence</h3>
+          <p class="dish__desc">Smashed beef, gegrilde rode ui, tomaat en huissaus.</p>
+        </div>
+      </article>
+
+      <article class="dish" data-drift="0.10">
+        <span class="tag tag--price dish__price">€ 9,50</span>
+        <a class="dish__badge" href="#bestel">Bestel nu</a>
+        <div class="dish__media">
+          <img src="assets/img/crispy-oldschool.png" alt="Crispy Old School burger" />
+        </div>
+        <div class="dish__top">
+          <h3 class="dish__name">Crispy Old School</h3>
+          <p class="dish__desc">Krokante kip, augurk, rode ui en pittige mayo.</p>
+        </div>
+      </article>
+
+      <article class="dish" data-drift="0.06">
+        <span class="tag tag--price dish__price">€ 9,50</span>
+        <a class="dish__badge" href="#bestel">Bestel nu</a>
+        <div class="dish__media">
+          <img src="assets/img/spicy.png" alt="Spicy beef burger" />
+        </div>
+        <div class="dish__top">
+          <h3 class="dish__name">Spicy Beef</h3>
+          <p class="dish__desc">Smashed beef met pit, rode ui en frisse sla.</p>
+        </div>
+      </article>
+
+      <article class="dish" data-drift="0.10">
+        <span class="tag tag--price dish__price">€ 9,50</span>
+        <a class="dish__badge" href="#bestel">Bestel nu</a>
+        <div class="dish__media">
+          <img src="assets/img/grilled-oldschool.png" alt="Grilled Old School burger" />
+        </div>
+        <div class="dish__top">
+          <h3 class="dish__name">Grilled Old School</h3>
+          <p class="dish__desc">Gegrilde kip, augurk, tomaat en knapperige sla.</p>
+        </div>
+      </article>
+    </div>
+
+    <div class="menu__cta">
+      <a href="#bestel" class="btn btn--blue">Bekijk het hele menu</a>
+    </div>
+  </section>
+
+  <!-- 2b. OVER ONS -->
+  <section class="drops" id="over-ons">
+    <figure class="drops__feature drops__feature--photo" data-reveal>
+      <img src="assets/img/team.webp" alt="Het team van Burger 'n Shake achter de toonbank" class="drops__feature-img" data-parallax="0.08" />
+      <span class="drops__feature-label">Ons team</span>
+    </figure>
+
+    <div class="drops__copy" data-reveal>
+      <span class="kicker kicker--light">Over ons</span>
+      <h2 class="section-title section-title--light">Dit is Burger 'n Shake</h2>
+      <p class="drops__text">
+        Wat begon als één zaak groeide uit tot elf vestigingen door heel Nederland. De basis bleef
+        hetzelfde: smashburgers van 100% halal vlees, milkshakes van ambachtelijk roomijs en frietjes
+        van organische ingrediënten. Elke dag opnieuw, met dezelfde zorg.
+      </p>
+      <a href="#waarom" class="btn btn--ghost">Meer over ons</a>
+    </div>
+  </section>
+
+  <!-- 3. WAAROM BURGER 'N SHAKE -->
+  <section class="waarom" id="waarom">
+    <div class="checker checker--top" aria-hidden="true"></div>
+    <div class="waarom__inner">
+      <div class="waarom__head">
+        <span class="kicker kicker--light">Waarom Burger 'n Shake</span>
+        <h2 class="section-title section-title--light">Kwaliteit die je proeft</h2>
+      </div>
+
+      <div class="waarom__grid">
+        <article class="reason" data-drift="0.05">
+          <span class="reason__icon" aria-hidden="true"><img src="assets/icons/halal.svg" alt="" /></span>
+          <h3 class="reason__title">100% Halal vlees</h3>
+          <p class="reason__text">
+            Van gecertificeerde slagers en vrijlopende dieren, natuurlijk halal tot in de kern.
+          </p>
+          <span class="reason__num">01</span>
+        </article>
+
+        <article class="reason" data-drift="0.10">
+          <span class="reason__icon" aria-hidden="true"><img src="assets/icons/Roomijs.svg" alt="" /></span>
+          <h3 class="reason__title">Ambachtelijk roomijs</h3>
+          <p class="reason__text">
+            Onze milkshakes draaien we van echt roomijs, nooit uit een poeder of een pak.
+          </p>
+          <span class="reason__num">02</span>
+        </article>
+
+        <article class="reason" data-drift="0.05">
+          <span class="reason__icon" aria-hidden="true"><img src="assets/icons/Vers.svg" alt="" /></span>
+          <h3 class="reason__title">Vers en organisch</h3>
+          <p class="reason__text">
+            Burgers, shakes en frietjes van organische ingrediënten, elke dag opnieuw bereid.
+          </p>
+          <span class="reason__num">03</span>
+        </article>
+      </div>
+    </div>
+    <div class="checker checker--bottom" aria-hidden="true"></div>
+  </section>
+
+  <!-- 4. VESTIGINGEN -->
+  <section class="locaties" id="vestigingen">
+    <div class="locaties__head">
+      <span class="kicker">Vestigingen</span>
+      <h2 class="section-title">Vind je stek</h2>
+      <p class="locaties__lead">
+        Elf vestigingen door heel Nederland en we blijven groeien. Klik een stad aan op de kaart
+        en bekijk de buurt, of plan meteen je route.
+      </p>
+    </div>
+
+    <div class="locaties__board">
+      <aside class="locaties__panel">
+        <div class="locaties__panel-head">
+          <span class="locaties__count">11 vestigingen</span>
+          <input type="search" class="locaties__search" id="loc-search" placeholder="Zoek vestiging" aria-label="Zoek vestiging" autocomplete="off" />
+        </div>
+        <ul class="loc-list" id="loc-list">
+          <li><button class="loc-item" type="button" data-name="Amsterdam Oostpoort" data-street="Land van Cocagneplein 1D" data-zip="1093 NB Amsterdam" data-phone="020 221 28 56" data-lat="52.3583" data-lng="4.9290">
+            <span class="loc-item__city">Oostpoort</span>
+            <span class="loc-item__area">Amsterdam · Land van Cocagneplein 1D</span>
+          </button></li>
+          <li><button class="loc-item" type="button" data-name="Amsterdam Westerpark" data-street="Van Limburg Stirumstraat 24A" data-zip="1051 BC Amsterdam" data-phone="020 237 16 35" data-lat="52.3830" data-lng="4.8770">
+            <span class="loc-item__city">Westerpark</span>
+            <span class="loc-item__area">Amsterdam · Van Limburg Stirumstraat 24A</span>
+          </button></li>
+          <li><button class="loc-item" type="button" data-name="Amsterdam Noord" data-street="Hagedoornweg 65" data-zip="1031 BP Amsterdam" data-phone="06 45 40 83 70" data-lat="52.3905" data-lng="4.9190">
+            <span class="loc-item__city">Noord</span>
+            <span class="loc-item__area">Amsterdam · Hagedoornweg 65</span>
+          </button></li>
+          <li><button class="loc-item" type="button" data-name="Amsterdam Osdorp" data-street="Osdorpplein 47" data-zip="1068 EK Amsterdam" data-phone="020 802 00 80" data-lat="52.3576" data-lng="4.8079">
+            <span class="loc-item__city">Osdorp</span>
+            <span class="loc-item__area">Amsterdam · Osdorpplein 47</span>
+          </button></li>
+          <li><button class="loc-item" type="button" data-name="Zaandam" data-street="Hermitage 12" data-zip="1506 TX Zaandam" data-phone="075 202 10 57" data-lat="52.4405" data-lng="4.8175">
+            <span class="loc-item__city">Zaandam</span>
+            <span class="loc-item__area">Hermitage 12</span>
+          </button></li>
+          <li><button class="loc-item" type="button" data-name="Almere" data-street="Grote Markt 51" data-zip="1315 JC Almere" data-phone="036 785 41 40" data-lat="52.3752" data-lng="5.2210">
+            <span class="loc-item__city">Almere</span>
+            <span class="loc-item__area">Grote Markt 51</span>
+          </button></li>
+          <li><button class="loc-item" type="button" data-name="Leiden" data-street="Steenstraat 22" data-zip="2312 BW Leiden" data-phone="071 240 00 13" data-lat="52.1618" data-lng="4.4835">
+            <span class="loc-item__city">Leiden</span>
+            <span class="loc-item__area">Steenstraat 22</span>
+          </button></li>
+          <li><button class="loc-item" type="button" data-name="Den Haag" data-street="Stationsweg 140a" data-zip="2515 BS Den Haag" data-phone="06 23 26 70 58" data-lat="52.0755" data-lng="4.3235">
+            <span class="loc-item__city">Den Haag</span>
+            <span class="loc-item__area">Stationsweg 140a</span>
+          </button></li>
+          <li><button class="loc-item" type="button" data-name="Rotterdam" data-street="Hoogstraat 143" data-zip="3011 PM Rotterdam" data-phone="06 190 503 79" data-lat="51.9218" data-lng="4.4875">
+            <span class="loc-item__city">Rotterdam</span>
+            <span class="loc-item__area">Hoogstraat 143</span>
+          </button></li>
+          <li><button class="loc-item" type="button" data-name="Zoetermeer" data-street="Burg. van Leeuwenpassage 25" data-zip="2711 JV Zoetermeer" data-phone="079 360 62 05" data-lat="52.0575" data-lng="4.4930">
+            <span class="loc-item__city">Zoetermeer</span>
+            <span class="loc-item__area">Burg. van Leeuwenpassage 25</span>
+          </button></li>
+          <li><button class="loc-item" type="button" data-name="Amstelveen" data-street="Stadsplein 89" data-zip="1181 ZM Amstelveen" data-phone="06 31 91 28 72" data-lat="52.3075" data-lng="4.8620">
+            <span class="loc-item__city">Amstelveen</span>
+            <span class="loc-item__area">Stadsplein 89</span>
+          </button></li>
+        </ul>
+      </aside>
+      <div class="locaties__map" id="loc-map" role="application" aria-label="Kaart met de vestigingen van Burger 'n Shake"></div>
+    </div>
+  </section>
+
+  <!-- 5. SOCIAL PROOF / UGC -->
+  <section class="ugc" id="ugc">
+    <div class="ugc__head">
+      <span class="kicker kicker--light">Gespot in het wild</span>
+      <h2 class="section-title section-title--light">Jullie momenten</h2>
+      <p class="ugc__lead">Tag <strong>@burgernshake</strong> en beland tussen de lekkerste beten van de week.</p>
+    </div>
+
+    <div class="marquee marquee--cards" aria-label="Video's van gasten">
+      <div class="marquee__track">
+        <figure class="polaroid polaroid--a">
+          <div class="polaroid__slot">
+            <video src="assets/ugc/ugc-2.mp4" autoplay muted loop playsinline preload="metadata"></video>
+          </div>
+          <figcaption>@eetnou</figcaption>
+        </figure>
+        <figure class="polaroid polaroid--b">
+          <div class="polaroid__slot">
+            <video src="assets/ugc/ugc-3.mp4" autoplay muted loop playsinline preload="metadata"></video>
+          </div>
+          <figcaption>@robinskitchennn</figcaption>
+        </figure>
+        <figure class="polaroid polaroid--c">
+          <div class="polaroid__slot">
+            <video src="assets/ugc/ugc-4.mp4" autoplay muted loop playsinline preload="metadata"></video>
+          </div>
+          <figcaption>@whitneyvalerie</figcaption>
+        </figure>
+        <figure class="polaroid polaroid--d">
+          <div class="polaroid__slot">
+            <video src="assets/ugc/ugc-1.mp4" autoplay muted loop playsinline preload="metadata"></video>
+          </div>
+          <figcaption>#burgernshake</figcaption>
+        </figure>
+      </div>
+    </div>
+
+    <div class="marquee marquee--yellow" aria-hidden="true">
+      <div class="marquee__track">
+        <span>#BurgerNShake</span><span class="marquee__dot">●</span>
+        <span>Tag ons</span><span class="marquee__dot">●</span>
+        <span>#Smashburger</span><span class="marquee__dot">●</span>
+        <span>#Milkshake</span><span class="marquee__dot">●</span>
+        <span>#BurgerNShake</span><span class="marquee__dot">●</span>
+        <span>Tag ons</span><span class="marquee__dot">●</span>
+        <span>#Smashburger</span><span class="marquee__dot">●</span>
+        <span>#Milkshake</span><span class="marquee__dot">●</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- 6. FRANCHISE -->
+  <section class="franchise" id="franchise">
+    <div class="franchise__inner">
+      <div class="franchise__copy">
+        <span class="kicker">Franchise</span>
+        <h2 class="section-title">Bouw mee aan de familie</h2>
+        <p class="franchise__text">
+          Wil jij deel uitmaken van de Burger 'n Shake familie? We groeiden uit tot elf vestigingen
+          met hetzelfde recept, en er is ruimte voor meer. Ontdek wat een eigen zaak jou kan brengen.
+        </p>
+        <a href="#bestel" class="btn btn--red">Ontdek de mogelijkheden</a>
+        <ul class="franchise__stats">
+          <li><strong data-count="11">11</strong><span>vestigingen</span></li>
+          <li><strong data-count="100" data-suffix="%">100%</strong><span>halal</span></li>
+          <li><strong data-count="4">4</strong><span>soorten patty</span></li>
+        </ul>
+      </div>
+      <div class="franchise__stage">
+        <div class="collage">
+          <div class="collage__grid" aria-hidden="true"></div>
+          <video class="collage__video" src="assets/video/franchise.mp4" autoplay muted loop playsinline preload="metadata"></video>
+          <span class="tag tag--yellow collage__sticker">Vers gedraaid</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 7. FOOTER CTA -->
+  <footer class="foot" id="bestel">
+    <div class="foot__grain" aria-hidden="true"></div>
+    <div class="foot__cta">
+      <h2 class="foot__title">
+        <span>Trek in een</span>
+        <span class="foot__title-accent">burger?</span>
+      </h2>
+      <a href="#bestel" class="btn btn--cream btn--lg">Bestel nu</a>
+    </div>
+
+    <div class="marquee marquee--cream" aria-hidden="true">
+      <div class="marquee__track">
+        <span>Klik</span><span class="marquee__dot">●</span>
+        <span>Bestel</span><span class="marquee__dot">●</span>
+        <span>Geniet in no time</span><span class="marquee__dot">●</span>
+        <span>Klik</span><span class="marquee__dot">●</span>
+        <span>Bestel</span><span class="marquee__dot">●</span>
+        <span>Geniet in no time</span><span class="marquee__dot">●</span>
+        <span>Klik</span><span class="marquee__dot">●</span>
+        <span>Bestel</span><span class="marquee__dot">●</span>
+        <span>Geniet in no time</span><span class="marquee__dot">●</span>
+      </div>
+    </div>
+
+    <div class="foot__grid">
+      <div class="foot__brand">
+        <span class="foot__logo">Burger 'n Shake</span>
+        <p>Smashburgers en ambachtelijke milkshakes. Klik, bestel en geniet in no time.</p>
+      </div>
+      <nav class="foot__col" aria-label="Menu">
+        <h3>Ontdek</h3>
+        <a href="#menu">Menu</a>
+        <a href="#waarom">Waarom wij</a>
+        <a href="#vestigingen">Vestigingen</a>
+        <a href="#franchise">Franchise</a>
+      </nav>
+      <nav class="foot__col" aria-label="Volg ons">
+        <h3>Volg ons</h3>
+        <a href="#">Instagram</a>
+        <a href="#">TikTok</a>
+        <a href="#">Facebook</a>
+      </nav>
+      <div class="foot__col">
+        <h3>Bestellen</h3>
+        <a href="#bestel">Online bestellen</a>
+        <a href="#vestigingen">Vind een vestiging</a>
+      </div>
+    </div>
+
+    <div class="foot__base">
+      <span>© 2026 Burger 'n Shake</span>
+      <span>100% Natuurlijk Halal</span>
+    </div>
+  </footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/ScrollTrigger.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/SplitText.min.js"></script>
+  <script src="https://unpkg.com/lenis@1.1.13/dist/lenis.min.js"></script>
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>

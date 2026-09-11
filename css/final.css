@@ -1,0 +1,206 @@
+/* ============================================================
+   BURGER 'N SHAKE — FINAL
+   Mix van concept 1, 2 en 3. Laadt NA styles.css, concept-2.css
+   en concept-3.css. Alleen de tweaks die de mix nodig heeft:
+   kleur-overrides, dambord-varianten en de kop-/kaart-restyling.
+   ============================================================ */
+
+/* ---------- dambord: blauw/wit variant (hero + locaties) ---------- */
+.checker--blue {
+  background:
+    repeating-conic-gradient(var(--cream) 0deg 90deg, var(--blue) 90deg 180deg)
+    0 0 / 34px 34px;
+}
+
+/* ============================================================
+   1. HERO — concept 1 hero met pill-nav en dambord onderaan
+   ============================================================ */
+.hero .topbar { position: absolute; }
+.hero__checker {
+  position: relative;
+  z-index: 4;
+  height: 44px;
+  width: 100%;
+}
+
+/* pill-nav met scheidingslijnen en actieve pill — zelfde look op home én subpagina's */
+.hero .pillnav,
+.page .pillnav { gap: 0; }
+.hero .pillnav a,
+.page .pillnav a { position: relative; padding: 6px clamp(14px, 1.6vw, 24px); }
+.hero .pillnav a:not(:first-child)::before,
+.page .pillnav a:not(:first-child)::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 1px;
+  height: 18px;
+  background: rgba(10, 10, 10, 0.18);
+}
+.hero .pillnav a.is-active,
+.page .pillnav a.is-active {
+  color: var(--cream);
+  background: var(--red);
+  border-radius: 999px;
+}
+.hero .pillnav a.is-active::before,
+.hero .pillnav a.is-active + a::before,
+.page .pillnav a.is-active::before,
+.page .pillnav a.is-active + a::before { display: none; }
+
+/* ============================================================
+   2. HALAL-BAND (rood) boven het menu
+   ============================================================ */
+.halalband {
+  background: url("../assets/img/bg-red.jpg") center / cover no-repeat, var(--red);
+  padding: clamp(16px, 2.2vw, 30px) 0;
+  overflow: hidden;
+}
+.halalband .hmarquee { margin: 0; }
+
+/* ============================================================
+   3. MENU — concept 1 kaarten, kop herwerkt naar twee kolommen
+   ============================================================ */
+.menu--final { background: #fff; }
+.menu__head--final {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: start;
+  gap: clamp(24px, 4vw, 72px);
+}
+.menu__title-wrap { position: relative; }
+.menu__ghost-title {
+  display: block;
+  font-family: var(--font-head);
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: var(--fs-h2);
+  line-height: 1;
+  letter-spacing: -0.02em;
+  color: transparent;
+  -webkit-text-stroke: 2px var(--blue);
+  margin-bottom: 4px;
+}
+.menu__head--final .section-title { margin-top: 0; }
+.menu__head--final .menu__lead {
+  margin: 0;
+  align-self: center;
+  max-width: 46ch;
+}
+
+.menu__cats--center {
+  justify-content: center;
+  margin: clamp(30px, 4vw, 56px) 0 clamp(38px, 5vw, 66px);
+}
+
+/* kaarten: geen harde rand, lichtblauw, om-en-om verspringend */
+.menu--final .dish {
+  border: none;
+  border-radius: 22px;
+  background: var(--card);
+  box-shadow: none;
+}
+.menu--final .dish:hover { box-shadow: 12px 14px 0 rgba(10, 10, 10, 0.14); }
+.menu--final .menu__scatter .dish:nth-child(odd) {
+  margin-top: clamp(28px, 4.5vw, 70px);
+}
+
+/* ============================================================
+   4. WAAROM — rode icon-tegels + verspringende middenkaart
+   ============================================================ */
+.waarom .reason__icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 62px;
+  height: 62px;
+  padding: 14px;
+  background: var(--red);
+  border-radius: 14px;
+  box-shadow: 3px 3px 0 var(--red-dark);
+}
+.waarom .reason__icon img { filter: brightness(0) invert(1); }
+.waarom .waarom__grid { align-items: start; }
+.waarom .reason:nth-child(odd) { margin-top: clamp(24px, 3vw, 52px); }
+
+/* ============================================================
+   5. LOCATIES — concept 2 spots op wit
+   ============================================================ */
+.spots--final { background: #fff; }
+
+/* ============================================================
+   6. UGC — gecentreerde tweekleurige titel
+   ============================================================ */
+.ugc__head--center { text-align: center; }
+.ugc__title {
+  font-family: var(--font-head);
+  font-weight: 700;
+  font-size: clamp(2.4rem, 6vw, 4.6rem);
+  line-height: 1;
+  text-transform: uppercase;
+  letter-spacing: -0.01em;
+  color: var(--cream);
+}
+.ugc__title span { color: var(--yellow); }
+.ugc__head--center .ugc__lead { margin: 16px auto 0; max-width: 52ch; }
+
+/* ============================================================
+   7. FRANCHISE — concept 3, zeppelin als foto + knop
+   ============================================================ */
+.franchise3__bg { object-position: center 30%; }
+.franchise3__cta { margin-top: clamp(26px, 3.4vw, 40px); }
+
+/* ============================================================
+   8. FINAL CTA — rood, met diagonale tape-marquees
+   ============================================================ */
+.finalcta {
+  position: relative;
+  background: url("../assets/img/bg-red.jpg") center / cover no-repeat, var(--red);
+  color: var(--cream);
+  overflow: hidden;
+}
+.finalcta__inner {
+  position: relative;
+  z-index: 2;
+  max-width: var(--wrap);
+  margin: 0 auto;
+  padding: clamp(72px, 10vw, 140px) clamp(20px, 4vw, 48px) clamp(48px, 6vw, 80px);
+  text-align: center;
+}
+.finalcta__title {
+  font-size: var(--fs-hero);
+  text-transform: uppercase;
+  text-shadow: 8px 9px 0 var(--ink);
+  margin-bottom: clamp(28px, 4vw, 44px);
+}
+.finalcta__title span { display: block; color: var(--yellow); text-shadow: 8px 9px 0 var(--ink); }
+
+/* gekruiste witte tape-banen met rode tekst */
+.tapes {
+  position: relative;
+  height: clamp(210px, 27vw, 340px);
+  z-index: 1;
+}
+.tapes .stripe {
+  position: absolute;
+  left: -16%;
+  width: 132%;
+  padding: clamp(10px, 1.3vw, 18px) 0;
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.22);
+}
+.tapes .tape--1 { top: 36%; transform: rotate(-9deg); }
+.tapes .tape--3 { top: 36%; transform: rotate(9deg); }
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+@media (max-width: 900px) {
+  .menu__head--final { grid-template-columns: 1fr; }
+  .menu__head--final .menu__lead { align-self: start; }
+  .waarom .reason:nth-child(odd) { margin-top: 0; }
+}
+@media (max-width: 720px) {
+  .menu--final .menu__scatter .dish:nth-child(odd) { margin-top: 0; }
+}

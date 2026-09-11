@@ -1,0 +1,627 @@
+/* ============================================================
+   BURGER 'N SHAKE — CONCEPT 2
+   Diagonale smash-marquee · burger centraal · blauwe achtergrond
+   Bouwt voort op styles.css (tokens, .btn, .marquee-basis)
+   ============================================================ */
+
+/* ---------- topbar: logo · pill-nav · menu-knop ---------- */
+.topbar {
+  position: absolute;
+  inset: 0 0 auto 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  padding: clamp(18px, 3vw, 30px) clamp(20px, 4vw, 56px);
+}
+.topbar__brand { display: inline-flex; align-items: center; line-height: 0; }
+.topbar__brand img { height: clamp(46px, 5vw, 64px); width: auto; }
+
+.pillnav {
+  display: inline-flex;
+  align-items: center;
+  gap: clamp(24px, 2.8vw, 46px);
+  padding: 17px clamp(26px, 2.6vw, 40px);
+  background: var(--cream);
+  border-radius: 999px;
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.20);
+}
+.pillnav a {
+  font-family: var(--font-body);
+  font-weight: 500;
+  font-size: clamp(1rem, 1.1vw, 1.15rem);
+  letter-spacing: 0.01em;
+  color: var(--ink);
+  transition: color 0.18s ease;
+}
+.pillnav a:hover { color: var(--red); }
+
+/* zelfde knopvorm als 'Bestel nu': 8px hoek + harde offset-schaduw */
+.topbar__cta {
+  display: inline-flex;
+  align-items: center;
+  font-family: var(--font-body);
+  font-weight: 500;
+  font-size: clamp(1rem, 1.1vw, 1.15rem);
+  letter-spacing: 0.01em;
+  color: var(--red);
+  background: var(--cream);
+  padding: 16px clamp(24px, 2.4vw, 34px);
+  border-radius: 8px;
+  box-shadow: 6px 6px 0 rgba(10, 10, 10, 0.22);
+  transition: transform 0.14s ease, box-shadow 0.14s ease;
+}
+.topbar__cta:hover { transform: translate(3px, 3px); box-shadow: 3px 3px 0 rgba(10, 10, 10, 0.22); }
+
+.topbar__toggle {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  width: 46px; height: 46px;
+  align-items: center;
+  justify-content: center;
+  background: var(--cream);
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+}
+.topbar__toggle span { width: 20px; height: 2px; background: var(--ink); }
+
+/* ============================================================
+   HERO 2
+   ============================================================ */
+.hero2 {
+  position: relative;
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding-top: clamp(120px, 16vh, 180px);
+  background: url("../assets/img/bg-blue.jpg") center / cover no-repeat, var(--blue);
+  color: var(--cream);
+  overflow: hidden;
+}
+
+/* diagonale marquee-band achter de burger */
+.smash-band {
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  z-index: 1;
+  width: 128%;
+  transform: translate(-50%, -50%) rotate(-8deg);
+  display: flex;
+  flex-direction: column;
+  gap: clamp(2px, 0.4vw, 8px);
+  pointer-events: none;
+  user-select: none;
+}
+.smash-row { overflow: hidden; white-space: nowrap; }
+.smash-track {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4em;
+  will-change: transform;
+}
+.smash-track span {
+  font-family: var(--font-head);
+  font-weight: 700;
+  font-size: clamp(3.4rem, 9.5vw, 9rem);
+  line-height: 0.92;
+  letter-spacing: -0.03em;
+  text-transform: uppercase;
+  padding-right: 0.4em;
+}
+.smash-row--solid  .smash-track span { color: var(--cream); }
+.smash-row--stroke .smash-track span {
+  color: transparent;
+  -webkit-text-stroke: 2px rgba(247, 244, 238, 0.85);
+}
+
+/* burger + copy stapel bovenop de band */
+.hero2__stage {
+  position: relative;
+  z-index: 3;
+  width: 100%;
+  max-width: 1080px;
+  margin: 0 auto;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: clamp(24px, 6vh, 72px) clamp(20px, 4vw, 48px) clamp(28px, 5vh, 56px);
+}
+.hero2__burger {
+  width: min(58vw, 500px);
+  height: auto;
+  filter: drop-shadow(0 34px 44px rgba(0, 0, 0, 0.5));
+}
+.hero2__copy {
+  margin: clamp(6px, 1.5vh, 20px) 0 clamp(24px, 3vh, 36px);
+  max-width: 52ch;
+  text-align: center;
+  font-size: var(--fs-lead);
+  color: rgba(247, 244, 238, 0.94);
+}
+
+/* wit/blauw dambord onderaan */
+.checker--hero {
+  position: relative;
+  z-index: 3;
+  height: 96px;
+  background:
+    repeating-conic-gradient(var(--cream) 0deg 90deg, transparent 90deg 180deg)
+    0 0 / 48px 48px;
+  will-change: background-position;
+}
+
+/* ============================================================
+   STORY — OVER ONS
+   ============================================================ */
+.story {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: clamp(760px, 96vh, 1120px);
+  padding: clamp(72px, 10vw, 140px) clamp(20px, 4vw, 48px);
+  background: #fff;
+  overflow: hidden;
+}
+
+/* grijze afbeelding-placeholders in de hoeken */
+.story__frames { position: absolute; inset: 0; z-index: 1; pointer-events: none; }
+.story__frame { position: absolute; overflow: hidden; background: #d8d8d8; }
+.story__frame img { display: block; width: 100%; height: 100%; object-fit: cover; }
+.story__frame--tl { top: 10%;  left: 3.5%;  width: clamp(180px, 15vw, 300px); height: clamp(220px, 34vw, 440px); }
+.story__frame--tr { top: 12%;  right: 3.5%; width: clamp(200px, 16.5vw, 330px); height: clamp(180px, 24vw, 300px); }
+.story__frame--bl { bottom: 10%; left: 8%;   width: clamp(240px, 24vw, 480px); height: clamp(200px, 26vw, 330px); }
+.story__frame--br { bottom: 8%; right: 3.5%; width: clamp(200px, 16.5vw, 330px); height: clamp(220px, 29vw, 360px); }
+
+.story__inner {
+  position: relative;
+  z-index: 2;
+  max-width: 640px;
+  text-align: center;
+}
+
+/* gekantelde kop: stroke-lijn + wit-op-blauw balk, beide -6deg */
+.story__title {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0 0 clamp(40px, 6vw, 72px);
+  text-transform: uppercase;
+  line-height: 0.98;
+}
+.story__title-line { display: inline-block; letter-spacing: -0.01em; }
+.story__title-line--stroke {
+  font-size: clamp(2.1rem, 5.4vw, 3.9rem);
+  color: transparent;
+  -webkit-text-stroke: 2px var(--blue);
+  transform: rotate(-6deg);
+}
+.story__title-line--fill {
+  margin-top: -0.06em;
+  padding: 0.12em 0.5em;
+  font-size: clamp(2.5rem, 6.4vw, 4.6rem);
+  color: var(--cream);
+  background: var(--blue);
+  transform: rotate(-6deg);
+  box-shadow: 6px 8px 0 rgba(10, 10, 10, 0.14);
+}
+
+.story__copy {
+  color: var(--ink);
+  font-size: clamp(0.98rem, 1.1vw, 1.1rem);
+  line-height: 1.7;
+}
+.story__copy p { margin: 0 0 1.4em; }
+.story__copy p:last-child { margin-bottom: clamp(30px, 4vw, 44px); }
+
+/* ============================================================
+   ONS MENU — carousel
+   ============================================================ */
+.menu2 {
+  position: relative;
+  padding: clamp(56px, 8vw, 110px) 0 clamp(64px, 9vw, 120px);
+  background: url("../assets/img/bg-red.jpg") center / cover no-repeat, var(--red);
+  color: var(--cream);
+  overflow: hidden;
+}
+.menu2__head { text-align: center; padding: 0 clamp(20px, 4vw, 48px); }
+.menu2__title {
+  font-size: clamp(2rem, 5vw, 3.6rem);
+  text-transform: uppercase;
+  color: var(--cream);
+}
+.menu2__cats {
+  display: inline-flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(12px, 1.8vw, 26px);
+  margin-top: clamp(24px, 3vw, 40px);
+}
+.menu2__cat {
+  font-family: var(--font-head);
+  font-weight: 500;
+  font-size: clamp(1rem, 1.3vw, 1.2rem);
+  color: rgba(247, 244, 238, 0.9);
+  background: transparent;
+  border: none;
+  padding: 10px 6px;
+  cursor: pointer;
+  transition: color 0.18s ease;
+}
+.menu2__cat:hover { color: var(--cream); }
+.menu2__cat.is-active {
+  color: var(--red);
+  background: var(--cream);
+  padding: 10px 26px;
+  border-radius: 999px;
+}
+
+.menu2__carousel { margin-top: clamp(30px, 5vw, 64px); }
+.menu2__track {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: clamp(28px, 4vw, 72px);
+  will-change: transform;
+  transition: transform 0.55s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.mcard {
+  flex: 0 0 auto;
+  width: clamp(240px, 24vw, 340px);
+  text-align: center;
+  cursor: pointer;
+  transform: scale(0.84);
+  transition: transform 0.55s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.mcard.is-center { transform: scale(1.08); } /* middelste altijd groter */
+.mcard__media { position: relative; }
+.mcard__img {
+  width: 100%;
+  height: auto;
+  filter: drop-shadow(0 22px 26px rgba(0, 0, 0, 0.4));
+  transition: transform 0.3s ease;
+}
+.mcard:hover .mcard__img { transform: rotate(-5deg); }
+.mcard__price {
+  position: absolute;
+  top: 6%;
+  right: 6%;
+  z-index: 2;
+  font-family: var(--font-head);
+  font-weight: 700;
+  font-size: clamp(1rem, 1.3vw, 1.25rem);
+  color: var(--ink);
+  background: var(--yellow);
+  padding: 8px 14px;
+  border-radius: 6px;
+  transform: rotate(-6deg);
+  box-shadow: 3px 3px 0 var(--yellow-dark);
+  transition: transform 0.3s ease;
+}
+.mcard:hover .mcard__price { transform: rotate(6deg) scale(1.06); }
+.mcard__name {
+  margin-top: 18px;
+  font-size: clamp(1.3rem, 1.8vw, 1.8rem);
+  color: var(--cream);
+}
+.mcard__desc {
+  margin: 10px auto 0;
+  max-width: 26ch;
+  font-size: var(--fs-sm);
+  color: rgba(247, 244, 238, 0.9);
+}
+
+.menu2__nav {
+  display: flex;
+  justify-content: center;
+  gap: 18px;
+  margin-top: clamp(30px, 4vw, 56px);
+}
+.menu2__arrow {
+  width: 64px;
+  height: 64px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--cream);
+  border: none;
+  border-radius: 50%;
+  color: var(--red);
+  cursor: pointer;
+  box-shadow: 0 10px 22px rgba(0, 0, 0, 0.2);
+  transition: transform 0.16s ease, box-shadow 0.16s ease;
+}
+.menu2__arrow:hover { transform: translateY(-3px); box-shadow: 0 14px 26px rgba(0, 0, 0, 0.26); }
+.menu2__arrow:active { transform: translateY(0); }
+.menu2__arrow svg { width: 26px; height: 26px; }
+
+/* halal / vers van de grill marquee */
+.hmarquee {
+  position: relative;
+  z-index: 2;
+  margin-top: clamp(48px, 7vw, 100px);
+  display: flex;
+  flex-direction: column;
+  gap: clamp(4px, 0.6vw, 12px);
+}
+.hmarquee-row { overflow: hidden; white-space: nowrap; }
+.hmarquee-track {
+  display: inline-flex;
+  align-items: center;
+  gap: clamp(12px, 1.3vw, 24px);
+  will-change: transform;
+}
+.htext {
+  font-family: var(--font-head);
+  font-weight: 700;
+  font-size: clamp(2.1rem, 5vw, 4.4rem);
+  line-height: 1;
+  text-transform: uppercase;
+  letter-spacing: -0.02em;
+  color: var(--cream);
+}
+.htext--stroke {
+  color: transparent;
+  -webkit-text-stroke: 2px rgba(247, 244, 238, 0.9);
+}
+.hicon {
+  flex: 0 0 auto;
+  width: clamp(2rem, 4.4vw, 3.6rem);
+  height: clamp(2rem, 4.4vw, 3.6rem);
+  background: url("../assets/img/hamburger.svg") center / contain no-repeat;
+}
+
+/* ============================================================
+   VESTIGINGEN — VIND JE STEK
+   ============================================================ */
+.spots {
+  position: relative;
+  padding: clamp(72px, 10vw, 140px) clamp(20px, 4vw, 48px);
+  background: #fff;
+  color: var(--ink);
+}
+.spots__head { max-width: 720px; margin: 0 auto clamp(36px, 5vw, 64px); text-align: center; }
+.spots__kicker {
+  display: inline-block;
+  font-family: var(--font-head);
+  font-weight: 700;
+  font-size: var(--fs-sm);
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: var(--red);
+}
+.spots__title {
+  margin-top: 12px;
+  font-size: clamp(2rem, 5vw, 3.6rem);
+  text-transform: uppercase;
+  color: var(--blue);
+}
+.spots__lead { margin: 16px auto 0; max-width: 44rem; color: rgba(10, 10, 10, 0.7); }
+
+/* ============================================================
+   TIKTOK GALLERY — JULLIE MOMENTEN
+   ============================================================ */
+.tok {
+  position: relative;
+  padding: clamp(64px, 9vw, 120px) 0;
+  background: url("../assets/img/bg-red.jpg") center / cover no-repeat, var(--red);
+  color: var(--cream);
+  overflow: hidden;
+}
+.tok__bgword {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-family: var(--font-head);
+  font-weight: 700;
+  font-size: clamp(4rem, 15vw, 16rem);
+  line-height: 1;
+  text-transform: uppercase;
+  letter-spacing: -0.03em;
+  color: transparent;
+  -webkit-text-stroke: 2px rgba(247, 244, 238, 0.26);
+  white-space: nowrap;
+  pointer-events: none;
+  z-index: 0;
+}
+.tok__head {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  padding: 0 clamp(20px, 4vw, 48px);
+  margin-bottom: clamp(40px, 6vw, 72px);
+}
+.tok__kicker {
+  display: inline-block;
+  font-family: var(--font-head);
+  font-weight: 700;
+  font-size: var(--fs-sm);
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: var(--yellow);
+}
+.tok__title {
+  margin-top: 12px;
+  font-size: clamp(2rem, 5vw, 3.6rem);
+  text-transform: uppercase;
+  color: var(--cream);
+}
+.tok__marquee { position: relative; z-index: 1; overflow: hidden; }
+.tok__track {
+  display: inline-flex;
+  align-items: center;
+  gap: clamp(18px, 2.6vw, 40px);
+  padding: 20px 0;
+  will-change: transform;
+}
+.tokcard {
+  flex: 0 0 auto;
+  width: clamp(180px, 18vw, 264px);
+  margin: 0;
+  background: var(--cream);
+  padding: 10px 10px 14px;
+  border-radius: 8px;
+  box-shadow: 8px 10px 0 rgba(0, 0, 0, 0.3);
+}
+.tokcard:nth-child(odd)  { transform: rotate(-4deg); }
+.tokcard:nth-child(even) { transform: rotate(3deg); }
+.tokcard__slot {
+  aspect-ratio: 9 / 16;
+  border-radius: 4px;
+  overflow: hidden;
+  background: var(--cream-2);
+}
+.tokcard__slot video { display: block; width: 100%; height: 100%; object-fit: cover; }
+.tokcard figcaption {
+  margin-top: 8px;
+  text-align: center;
+  font-weight: 700;
+  font-size: var(--fs-sm);
+  color: var(--red);
+}
+
+/* ============================================================
+   MARQUEE STRIP — wit met rode tekst
+   ============================================================ */
+.stripe {
+  overflow: hidden;
+  white-space: nowrap;
+  background: #fff;
+  padding: clamp(14px, 1.6vw, 22px) 0;
+}
+.stripe__track {
+  display: inline-flex;
+  align-items: center;
+  gap: clamp(20px, 2.4vw, 40px);
+  will-change: transform;
+}
+.stripe__track span {
+  font-family: var(--font-head);
+  font-weight: 700;
+  font-size: clamp(1.1rem, 2.2vw, 2rem);
+  text-transform: uppercase;
+  letter-spacing: 0.01em;
+  color: var(--red);
+}
+.stripe__dot {
+  flex: 0 0 auto;
+  width: 0.5em;
+  height: 0.5em;
+  border-radius: 50%;
+  background: var(--red);
+}
+
+/* ============================================================
+   FRANCHISE — START JE FRANCHISE
+   ============================================================ */
+.franchise2 {
+  position: relative;
+  padding: clamp(64px, 9vw, 120px) clamp(20px, 4vw, 48px);
+  background: url("../assets/img/bg-blue.jpg") center / cover no-repeat, var(--blue);
+  color: var(--cream);
+  overflow: hidden;
+}
+.franchise2__grid {
+  max-width: 1400px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  grid-template-areas:
+    "w1 intro cta"
+    "w2 w2    w2";
+  align-items: start;
+  gap: clamp(16px, 2vw, 30px) clamp(28px, 4vw, 64px);
+}
+.franchise2__word {
+  font-family: var(--font-head);
+  font-weight: 700;
+  font-size: clamp(3.4rem, 11vw, 11rem);
+  line-height: 0.86;
+  letter-spacing: -0.03em;
+  text-transform: uppercase;
+  color: var(--yellow);
+}
+.franchise2__word--1 { grid-area: w1; }
+.franchise2__word--2 { grid-area: w2; }
+.franchise2__intro { grid-area: intro; max-width: 42ch; padding-top: clamp(8px, 1vw, 18px); }
+.franchise2__intro p {
+  margin: 0;
+  font-family: "Roboto", var(--font-body);
+  font-weight: 400;
+  font-size: clamp(0.95rem, 1vw, 1.05rem);
+  line-height: 1.7;
+  text-transform: none;
+  color: rgba(247, 244, 238, 0.92);
+}
+.franchise2__intro a {
+  font-weight: 700;
+  color: var(--yellow);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.franchise2__cta { grid-area: cta; justify-self: end; align-self: start; }
+.franchise2__photo {
+  max-width: 1400px;
+  margin: clamp(16px, 2.5vw, 32px) auto 0;
+  aspect-ratio: 16 / 7;
+  overflow: hidden;
+  border: clamp(10px, 1.4vw, 20px) solid var(--cream);
+  background: var(--cream);
+}
+.franchise2__photo img,
+.franchise2__photo video { display: block; width: 100%; height: 100%; object-fit: cover; }
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+@media (max-width: 900px) {
+  .story { min-height: 0; }
+  .franchise2__grid {
+    grid-template-columns: 1fr;
+    grid-template-areas: "w1" "intro" "cta" "w2";
+  }
+  .franchise2__cta { justify-self: start; }
+  .franchise2__word { font-size: clamp(3rem, 15vw, 6rem); }
+  .franchise2__photo { aspect-ratio: 4 / 3; }
+  .story__frames {
+    position: static;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-top: clamp(40px, 8vw, 64px);
+  }
+  .story__frame {
+    position: static;
+    inset: auto;
+    width: auto;
+    height: clamp(130px, 34vw, 180px);
+  }
+  .pillnav { display: none; }
+  .topbar__toggle { display: flex; }
+  .topbar.is-open .pillnav {
+    display: flex;
+    position: absolute;
+    top: 100%; left: clamp(20px, 4vw, 56px); right: clamp(20px, 4vw, 56px);
+    flex-direction: column;
+    gap: 4px;
+    padding: 16px 22px;
+    border-radius: 18px;
+  }
+  .topbar.is-open .pillnav a { padding: 10px 0; }
+  .smash-band { width: 150%; }
+  .smash-track span { font-size: clamp(2.6rem, 12vw, 5rem); }
+}
+
+@media (max-width: 560px) {
+  .topbar__cta { display: none; }
+  .hero2__burger { width: min(78vw, 360px); }
+}

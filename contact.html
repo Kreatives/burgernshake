@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact — Burger 'n Shake</title>
+  <meta name="description" content="Neem contact op met Burger 'n Shake. Vragen over bestellen, een vestiging, franchise, pers of werken bij, we horen graag van je." />
+  <link rel="preconnect" href="https://use.typekit.net" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://use.typekit.net/eqx1zww.css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" />
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <link rel="stylesheet" href="css/styles.css" />
+  <link rel="stylesheet" href="css/concept-2.css" />
+  <link rel="stylesheet" href="css/concept-3.css" />
+  <link rel="stylesheet" href="css/final.css?v=2" />
+  <link rel="stylesheet" href="css/pages.css?v=2" />
+</head>
+<body class="page">
+
+  <!-- HERO -->
+  <section class="pagehero" id="top">
+    <header class="topbar" id="topbar">
+      <a href="final.html" class="topbar__brand" aria-label="Burger 'n Shake home">
+        <img src="assets/img/logo.png" alt="Burger 'n Shake" />
+      </a>
+      <nav class="pillnav" aria-label="Hoofdmenu">
+        <a href="final.html">Home</a>
+        <a href="final.html#menu">Menu</a>
+        <a href="over-ons.html">Over ons</a>
+        <a href="franchise.html">Franchise</a>
+        <a href="contact.html" class="is-active">Contact</a>
+      </nav>
+      <a href="final.html#bestel" class="topbar__cta">Bestel nu</a>
+      <button class="topbar__toggle" aria-label="Menu openen" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </header>
+
+    <!-- Contrast-check hero: cream/gele tekst op blauwe grain-achtergrond + wit formulierkaart. -->
+    <div class="pagehero__inner">
+      <div class="pagehero__copy">
+        <span class="kicker pagehero__kicker">Contact</span>
+        <h1 class="pagehero__title">Neem contact op</h1>
+        <p class="pagehero__sub">
+          Vraag over je bestelling, een vestiging, franchise of een samenwerking? Vul het formulier in,
+          dan komt je bericht meteen bij de juiste persoon terecht.
+        </p>
+        <div class="pagehero__actions">
+          <a href="mailto:info@burgernshake.nl" class="btn btn--yellow">Mail ons direct</a>
+          <a href="https://wa.me/31600000000" class="btn btn--cream">WhatsApp</a>
+        </div>
+      </div>
+      <div class="pagehero__form">
+        <form class="form" data-form novalidate>
+          <div class="form__row">
+            <div class="field"><label for="c-naam">Naam</label><input id="c-naam" name="naam" type="text" required autocomplete="name" /></div>
+            <div class="field"><label for="c-mail">E-mailadres</label><input id="c-mail" name="email" type="email" required autocomplete="email" /></div>
+          </div>
+          <div class="form__row">
+            <div class="field"><label for="c-tel">Telefoonnummer</label><input id="c-tel" name="telefoon" type="tel" autocomplete="tel" /></div>
+            <div class="field">
+              <label for="c-onderwerp">Onderwerp</label>
+              <select id="c-onderwerp" name="onderwerp">
+                <option value="">Maak een keuze</option>
+                <option>Algemene vraag</option>
+                <option>Bestelling of vestiging</option>
+                <option>Franchise</option>
+                <option>Pers of samenwerking</option>
+                <option>Werken bij</option>
+              </select>
+            </div>
+          </div>
+          <div class="field field--full">
+            <label for="c-bericht">Je bericht</label>
+            <textarea id="c-bericht" name="bericht" required></textarea>
+          </div>
+          <div class="field field--check">
+            <input id="c-consent" name="consent" type="checkbox" required />
+            <label for="c-consent">Ik geef Burger 'n Shake toestemming om contact met mij op te nemen naar aanleiding van dit bericht.</label>
+          </div>
+          <button type="submit" class="btn btn--red">Verstuur bericht</button>
+          <p class="form__ok" hidden>Bedankt voor je bericht. We hebben het goed ontvangen en nemen zo snel mogelijk contact met je op.</p>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- BURGER-MARQUEE -->
+  <div class="burgermarq burgermarq--yellow" aria-hidden="true">
+    <div class="marquee"><div class="marquee__track">
+      <span class="burgermarq__item"><span class="burgermarq__icon"></span>Burger 'n Shake</span>
+      <span class="burgermarq__item"><span class="burgermarq__icon"></span>100% Halal</span>
+      <span class="burgermarq__item"><span class="burgermarq__icon"></span>Vers gedraaid</span>
+      <span class="burgermarq__item"><span class="burgermarq__icon"></span>Burger 'n Shake</span>
+      <span class="burgermarq__item"><span class="burgermarq__icon"></span>100% Halal</span>
+      <span class="burgermarq__item"><span class="burgermarq__icon"></span>Vers gedraaid</span>
+    </div></div>
+  </div>
+
+  <!-- ALGEMENE CONTACTKAARTEN (op wit) -->
+  <section class="block block--cream">
+    <div class="block__inner">
+      <div class="block__head block__head--center">
+        <span class="kicker">Direct de juiste lijn</span>
+        <h2 class="section-title">Waar kunnen we je mee helpen?</h2>
+      </div>
+      <div class="cardgrid cardgrid--2">
+        <article class="infocard contactcard">
+          <span class="contactcard__label">Algemeen</span>
+          <h3>Vragen en feedback</h3>
+          <p>Voor alle algemene vragen, complimenten of opmerkingen over je bezoek.</p>
+          <p><a href="mailto:info@burgernshake.nl">info@burgernshake.nl</a></p>
+          <p><a href="tel:+31200000000">020 000 00 00</a></p>
+        </article>
+        <article class="infocard contactcard">
+          <span class="contactcard__label">Bestellen</span>
+          <h3>Bestellen en vestigingen</h3>
+          <p>Iets misgegaan met je bestelling of een vraag over een specifieke zaak? Zoek je vestiging op de kaart en bel ze direct.</p>
+          <p><a href="#locaties">Bekijk de vestigingen</a></p>
+        </article>
+        <article class="infocard contactcard">
+          <span class="contactcard__label">Franchise</span>
+          <h3>Zelf een zaak openen</h3>
+          <p>Wil je onderdeel worden van de familie en een eigen Burger 'n Shake beginnen, dan denken we graag met je mee.</p>
+          <p><a href="mailto:franchise@burgernshake.nl">franchise@burgernshake.nl</a></p>
+          <p><a href="franchise.html">Naar de franchisepagina</a></p>
+        </article>
+        <article class="infocard contactcard">
+          <span class="contactcard__label">Pers en samenwerking</span>
+          <h3>Pers, socials en collabs</h3>
+          <p>Voor media, content, sponsoring of een samenwerking rond het merk.</p>
+          <p><a href="mailto:pers@burgernshake.nl">pers@burgernshake.nl</a></p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- BURGER-MARQUEE -->
+  <div class="burgermarq burgermarq--blue" aria-hidden="true">
+    <div class="marquee"><div class="marquee__track">
+      <span class="burgermarq__item"><span class="burgermarq__icon"></span>Kom langs</span>
+      <span class="burgermarq__item"><span class="burgermarq__icon"></span>Bestel nu</span>
+      <span class="burgermarq__item"><span class="burgermarq__icon"></span>Burger 'n Shake</span>
+      <span class="burgermarq__item"><span class="burgermarq__icon"></span>Kom langs</span>
+      <span class="burgermarq__item"><span class="burgermarq__icon"></span>Bestel nu</span>
+      <span class="burgermarq__item"><span class="burgermarq__icon"></span>Burger 'n Shake</span>
+    </div></div>
+  </div>
+
+  <!-- WERKEN BIJ -->
+  <section class="block block--red" id="werken">
+    <div class="block__inner split">
+      <div class="split__body">
+        <span class="kicker">Werken bij</span>
+        <h2 class="section-title">Kom in de crew</h2>
+        <p>
+          We zoeken doorlopend mensen die het tempo aankunnen, de gasten kennen en er zin in hebben. Of je
+          nu achter de grill wilt staan, shakes wilt draaien of een team wilt aansturen, bij Burger 'n
+          Shake leer je het vak van binnenuit.
+        </p>
+        <p>
+          Stuur je motivatie en cv naar <a class="textlink textlink--ink" href="mailto:jobs@burgernshake.nl">jobs@burgernshake.nl</a> en vertel er kort bij in welke stad je wilt werken.
+        </p>
+      </div>
+      <figure class="split__media">
+        <img src="assets/img/brand/brand-4.jpg" alt="Crew van Burger 'n Shake in de keuken" loading="lazy" />
+      </figure>
+    </div>
+  </section>
+
+  <!-- BURGER-MARQUEE -->
+  <div class="burgermarq burgermarq--yellow" aria-hidden="true">
+    <div class="marquee"><div class="marquee__track">
+      <span class="burgermarq__item"><span class="burgermarq__icon"></span>Vind je stek</span>
+      <span class="burgermarq__item"><span class="burgermarq__icon"></span>Elf vestigingen</span>
+      <span class="burgermarq__item"><span class="burgermarq__icon"></span>Burger 'n Shake</span>
+      <span class="burgermarq__item"><span class="burgermarq__icon"></span>Vind je stek</span>
+      <span class="burgermarq__item"><span class="burgermarq__icon"></span>Elf vestigingen</span>
+      <span class="burgermarq__item"><span class="burgermarq__icon"></span>Burger 'n Shake</span>
+    </div></div>
+  </div>
+
+  <!-- VESTIGINGEN + OPENINGSTIJDEN -->
+  <section class="spots spots--final" id="locaties">
+    <div class="spots__head">
+      <span class="spots__kicker">Locaties</span>
+      <h2 class="spots__title">Vind je stek</h2>
+      <p class="spots__lead">
+        Elf vestigingen door heel Nederland en we blijven groeien. Klik een stad aan op de kaart en bel de
+        vestiging direct, of plan meteen je route.
+      </p>
+    </div>
+
+    <div class="locaties__board">
+      <aside class="locaties__panel">
+        <div class="locaties__panel-head">
+          <span class="locaties__count">11 vestigingen</span>
+          <input type="search" class="locaties__search" id="loc-search" placeholder="Zoek vestiging" aria-label="Zoek vestiging" autocomplete="off" />
+        </div>
+        <ul class="loc-list" id="loc-list">
+          <li><button class="loc-item" type="button" data-name="Amsterdam Oostpoort" data-street="Land van Cocagneplein 1D" data-zip="1093 NB Amsterdam" data-phone="020 221 28 56" data-lat="52.3583" data-lng="4.9290"><span class="loc-item__city">Oostpoort</span><span class="loc-item__area">Amsterdam · Land van Cocagneplein 1D</span></button></li>
+          <li><button class="loc-item" type="button" data-name="Amsterdam Westerpark" data-street="Van Limburg Stirumstraat 24A" data-zip="1051 BC Amsterdam" data-phone="020 237 16 35" data-lat="52.3830" data-lng="4.8770"><span class="loc-item__city">Westerpark</span><span class="loc-item__area">Amsterdam · Van Limburg Stirumstraat 24A</span></button></li>
+          <li><button class="loc-item" type="button" data-name="Amsterdam Noord" data-street="Hagedoornweg 65" data-zip="1031 BP Amsterdam" data-phone="06 45 40 83 70" data-lat="52.3905" data-lng="4.9190"><span class="loc-item__city">Noord</span><span class="loc-item__area">Amsterdam · Hagedoornweg 65</span></button></li>
+          <li><button class="loc-item" type="button" data-name="Amsterdam Osdorp" data-street="Osdorpplein 47" data-zip="1068 EK Amsterdam" data-phone="020 802 00 80" data-lat="52.3576" data-lng="4.8079"><span class="loc-item__city">Osdorp</span><span class="loc-item__area">Amsterdam · Osdorpplein 47</span></button></li>
+          <li><button class="loc-item" type="button" data-name="Zaandam" data-street="Hermitage 12" data-zip="1506 TX Zaandam" data-phone="075 202 10 57" data-lat="52.4405" data-lng="4.8175"><span class="loc-item__city">Zaandam</span><span class="loc-item__area">Hermitage 12</span></button></li>
+          <li><button class="loc-item" type="button" data-name="Almere" data-street="Grote Markt 51" data-zip="1315 JC Almere" data-phone="036 785 41 40" data-lat="52.3752" data-lng="5.2210"><span class="loc-item__city">Almere</span><span class="loc-item__area">Grote Markt 51</span></button></li>
+          <li><button class="loc-item" type="button" data-name="Leiden" data-street="Steenstraat 22" data-zip="2312 BW Leiden" data-phone="071 240 00 13" data-lat="52.1618" data-lng="4.4835"><span class="loc-item__city">Leiden</span><span class="loc-item__area">Steenstraat 22</span></button></li>
+          <li><button class="loc-item" type="button" data-name="Den Haag" data-street="Stationsweg 140a" data-zip="2515 BS Den Haag" data-phone="06 23 26 70 58" data-lat="52.0755" data-lng="4.3235"><span class="loc-item__city">Den Haag</span><span class="loc-item__area">Stationsweg 140a</span></button></li>
+          <li><button class="loc-item" type="button" data-name="Rotterdam" data-street="Hoogstraat 143" data-zip="3011 PM Rotterdam" data-phone="06 190 503 79" data-lat="51.9218" data-lng="4.4875"><span class="loc-item__city">Rotterdam</span><span class="loc-item__area">Hoogstraat 143</span></button></li>
+          <li><button class="loc-item" type="button" data-name="Zoetermeer" data-street="Burg. van Leeuwenpassage 25" data-zip="2711 JV Zoetermeer" data-phone="079 360 62 05" data-lat="52.0575" data-lng="4.4930"><span class="loc-item__city">Zoetermeer</span><span class="loc-item__area">Burg. van Leeuwenpassage 25</span></button></li>
+          <li><button class="loc-item" type="button" data-name="Amstelveen" data-street="Stadsplein 89" data-zip="1181 ZM Amstelveen" data-phone="06 31 91 28 72" data-lat="52.3075" data-lng="4.8620"><span class="loc-item__city">Amstelveen</span><span class="loc-item__area">Stadsplein 89</span></button></li>
+        </ul>
+      </aside>
+      <div class="locaties__map" id="loc-map" role="application" aria-label="Kaart met de vestigingen van Burger 'n Shake"></div>
+    </div>
+  </section>
+
+  <div class="checker checker--blue" aria-hidden="true"></div>
+
+  <!-- SITE FOOTER -->
+  <footer class="sitefoot">
+    <div class="sitefoot__grid">
+      <div class="sitefoot__brand">
+        <span class="sitefoot__logo"><img src="assets/img/logo.png" alt="Burger 'n Shake" /></span>
+        <p>Smashburgers en ambachtelijke milkshakes, vers gedraaid en 100% halal. Klik, bestel en geniet in no time.</p>
+      </div>
+      <nav class="sitefoot__col" aria-label="Ontdek">
+        <h3>Ontdek</h3>
+        <a href="final.html#menu">Menu</a>
+        <a href="over-ons.html">Over ons</a>
+        <a href="final.html#locaties">Vestigingen</a>
+        <a href="franchise.html">Franchise</a>
+      </nav>
+      <nav class="sitefoot__col" aria-label="Volg ons">
+        <h3>Volg ons</h3>
+        <a href="#">Instagram</a>
+        <a href="#">TikTok</a>
+        <a href="#">Facebook</a>
+      </nav>
+      <nav class="sitefoot__col" aria-label="Contact">
+        <h3>Contact</h3>
+        <a href="contact.html">Contactpagina</a>
+        <a href="contact.html#werken">Werken bij</a>
+        <a href="mailto:info@burgernshake.nl">info@burgernshake.nl</a>
+      </nav>
+    </div>
+    <div class="sitefoot__base">
+      <span>© 2026 Burger 'n Shake</span>
+      <span>100% Natuurlijk Halal</span>
+    </div>
+  </footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/ScrollTrigger.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/SplitText.min.js"></script>
+  <script src="https://unpkg.com/lenis@1.1.13/dist/lenis.min.js"></script>
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script src="js/final.js?v=2"></script>
+</body>
+</html>

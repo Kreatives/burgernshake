@@ -1,0 +1,986 @@
+/* ============================================================
+   BURGER 'N SHAKE — SUBPAGINA'S (over ons, franchise, contact)
+   Bouwt voort op styles.css, concept-2.css, concept-3.css en
+   final.css. Alleen de componenten die de subpagina's nodig
+   hebben: page-hero, tekstblokken, kaartgrids, checklist,
+   vergelijking, stappenplan, FAQ, formulier en site-footer.
+   ============================================================ */
+
+/* laat de pill-nav ook op donkere page-hero's werken (actieve pill: zie final.css) */
+.page .topbar { position: absolute; }
+
+/* ============================================================
+   PAGE HERO
+   ============================================================ */
+.pagehero {
+  position: relative;
+  overflow: hidden;
+  padding: clamp(150px, 20vh, 220px) clamp(20px, 4vw, 48px) clamp(64px, 9vw, 120px);
+  color: var(--cream);
+  background: url("../assets/img/bg-blue.jpg") center / cover no-repeat, var(--blue);
+}
+.pagehero--red { background: url("../assets/img/bg-red.jpg") center / cover no-repeat, var(--red); }
+.pagehero__inner {
+  position: relative;
+  z-index: 2;
+  max-width: var(--wrap);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
+  align-items: center;
+  gap: clamp(32px, 5vw, 72px);
+}
+.pagehero__copy { max-width: 40rem; }
+.pagehero__kicker { color: var(--yellow); }
+.pagehero__title {
+  margin: 14px 0 0;
+  font-size: clamp(2.8rem, 7vw, 6rem);
+  line-height: 0.94;
+  text-transform: uppercase;
+  color: var(--cream);
+  text-shadow: 7px 8px 0 var(--ink);
+}
+.pagehero__sub {
+  margin: clamp(20px, 3vw, 30px) 0 0;
+  font-size: var(--fs-lead);
+  color: rgba(247, 244, 238, 0.92);
+}
+.pagehero__actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 14px 18px;
+  margin-top: clamp(26px, 3.4vw, 40px);
+}
+.pagehero__micro {
+  margin: 16px 0 0;
+  font-size: var(--fs-sm);
+  color: rgba(247, 244, 238, 0.75);
+}
+.pagehero__media {
+  position: relative;
+  aspect-ratio: 5 / 4;
+  border-radius: 20px;
+  overflow: hidden;
+  border: 5px solid var(--cream);
+  box-shadow: 12px 14px 0 rgba(10, 10, 10, 0.28);
+}
+.pagehero__media img { width: 100%; height: 100%; object-fit: cover; }
+
+/* full-bleed foto-achtergrond (zeppelin op de franchise-hero) */
+.pagehero__bg { position: absolute; inset: 0; z-index: 0; width: 100%; height: 100%; object-fit: cover; object-position: center 35%; }
+.pagehero__scrim {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: linear-gradient(90deg, rgba(10, 10, 10, 0.85) 0%, rgba(10, 10, 10, 0.6) 42%, rgba(10, 10, 10, 0.15) 100%);
+}
+.pagehero--photo .pagehero__inner { grid-template-columns: 1fr; }
+.pagehero--photo .pagehero__copy { max-width: 46rem; }
+
+/* contact-hero: formulier i.p.v. beeld */
+.pagehero--form .pagehero__inner { align-items: start; }
+.pagehero__form { position: relative; z-index: 2; }
+.pagehero__form .form { max-width: none; margin: 0; width: 100%; }
+
+/* burger-marquee tussen secties */
+.burgermarq { overflow: hidden; border-block: 2px solid var(--ink); }
+.burgermarq .marquee { padding: clamp(12px, 1.6vw, 18px) 0; }
+.burgermarq .marquee__track { gap: clamp(28px, 4vw, 56px); align-items: center; }
+.burgermarq__item {
+  display: inline-flex;
+  align-items: center;
+  gap: clamp(16px, 2vw, 28px);
+  font-family: var(--font-head);
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: clamp(1rem, 1.6vw, 1.5rem);
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+}
+.burgermarq__icon {
+  width: clamp(26px, 3vw, 38px);
+  height: clamp(26px, 3vw, 38px);
+  flex: none;
+  background: currentColor;
+  -webkit-mask: url("../assets/img/hamburger.svg") center / contain no-repeat;
+  mask: url("../assets/img/hamburger.svg") center / contain no-repeat;
+}
+.burgermarq--yellow { background: var(--yellow); color: var(--ink); }
+.burgermarq--blue { background: var(--blue); color: var(--cream); border-color: var(--cream); }
+.burgermarq--red { background: var(--red); color: var(--cream); border-color: var(--cream); }
+
+/* tekstlink met pijl (secundaire routes) */
+.textlink {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-head);
+  font-weight: 700;
+  font-size: var(--fs-sm);
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  color: var(--yellow);
+  border-bottom: 2px solid transparent;
+  transition: border-color 0.18s ease;
+}
+.textlink:hover { border-color: var(--yellow); }
+.textlink--ink { color: var(--red); }
+.textlink--ink:hover { border-color: var(--red); }
+
+/* ============================================================
+   TEKSTBLOK / PROSE
+   ============================================================ */
+.block {
+  padding: var(--pad-y) clamp(20px, 4vw, 48px);
+  background: #fff;
+}
+.block--cream { background: var(--cream); }
+.block--tint { background: var(--card); }
+/* gekleurde grain-secties (brand-achtergronden) */
+.block--blue { background: url("../assets/img/bg-blue.jpg") center / cover no-repeat, var(--blue); color: var(--cream); }
+.block--red { background: url("../assets/img/bg-red.jpg") center / cover no-repeat, var(--red); color: var(--cream); }
+.block--blue .kicker, .block--red .kicker { color: var(--yellow); }
+.block--blue .section-title, .block--red .section-title { color: var(--cream); }
+.block--blue .block__lead, .block--red .block__lead,
+.block--blue .split__body p, .block--red .split__body p,
+.block--blue .story-split__body p, .block--red .story-split__body p,
+.block--blue .block__note, .block--red .block__note { color: rgba(247, 244, 238, 0.9); }
+.block--blue .textlink--ink, .block--red .textlink--ink { color: var(--yellow); }
+.block--blue .textlink--ink:hover, .block--red .textlink--ink:hover { border-color: var(--yellow); }
+.block--blue .checklist li, .block--red .checklist li { color: rgba(247, 244, 238, 0.92); }
+
+/* fotostrip (doorlopende marquee met brand-foto's) */
+.photostrip-band { background: var(--cream); }
+.photostrip-band--blue { background: url("../assets/img/bg-blue.jpg") center / cover no-repeat, var(--blue); }
+.photostrip-band--red { background: url("../assets/img/bg-red.jpg") center / cover no-repeat, var(--red); }
+.photostrip { padding: clamp(30px, 4vw, 56px) 0; overflow: hidden; }
+.photostrip .marquee__track { gap: clamp(16px, 2vw, 26px); align-items: center; }
+.photo {
+  flex: 0 0 auto;
+  width: clamp(220px, 24vw, 340px);
+  aspect-ratio: 4 / 3;
+  margin: 0;
+  border-radius: 16px;
+  overflow: hidden;
+  border: 4px solid var(--cream);
+  box-shadow: 8px 10px 0 rgba(10, 10, 10, 0.24);
+}
+.photo:nth-child(odd) { transform: rotate(-2deg); }
+.photo:nth-child(even) { transform: rotate(2deg); }
+.photo img { width: 100%; height: 100%; object-fit: cover; }
+
+/* succesverhaal-kaart (placeholder met foto) */
+.storycard { margin: 0; background: var(--cream); border: 2px solid var(--ink); border-radius: 16px; overflow: hidden; box-shadow: 8px 10px 0 rgba(10, 10, 10, 0.24); }
+.storycard__media { display: block; aspect-ratio: 4 / 3; overflow: hidden; }
+.storycard__media img { width: 100%; height: 100%; object-fit: cover; }
+.storycard__cap {
+  display: block;
+  padding: clamp(18px, 1.6vw, 24px) clamp(18px, 1.6vw, 24px) clamp(20px, 1.8vw, 26px);
+}
+.storycard__title {
+  margin: 0;
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: var(--fs-lead);
+  line-height: 1.25;
+  letter-spacing: -0.02em;
+  text-transform: none;
+  color: var(--ink);
+}
+.storycard__more {
+  display: inline-block;
+  margin-top: 10px;
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: var(--fs-sm);
+  letter-spacing: -0.01em;
+  color: var(--red);
+  border-bottom: 2px solid currentColor;
+  padding-bottom: 1px;
+}
+.storycard__more:hover { color: var(--ink); }
+.block__inner { max-width: var(--wrap); margin: 0 auto; }
+.block__head { max-width: 760px; margin: 0 auto clamp(32px, 4.5vw, 56px); }
+.block__head--center { text-align: center; }
+.block__lead { margin-top: 16px; color: rgba(10, 10, 10, 0.72); font-size: var(--fs-lead); }
+
+/* verhaal: kop links, tekst rechts */
+.story-split {
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+  gap: clamp(28px, 5vw, 80px);
+  align-items: start;
+}
+.story-split__body p { margin: 0 0 1.25em; color: rgba(10, 10, 10, 0.78); }
+.story-split__body p:last-child { margin-bottom: 0; }
+.story-split__note {
+  margin-top: 20px;
+  padding: 16px 20px;
+  border-left: 4px solid var(--yellow);
+  background: rgba(255, 214, 0, 0.12);
+  font-size: var(--fs-sm);
+  color: rgba(10, 10, 10, 0.75);
+}
+
+/* ============================================================
+   KAARTGRID (waarden, pijlers, support, contactmethodes)
+   ============================================================ */
+.cardgrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: clamp(20px, 2.6vw, 34px);
+}
+.cardgrid--2 { grid-template-columns: repeat(2, 1fr); }
+.infocard {
+  position: relative;
+  padding: clamp(26px, 2.6vw, 38px);
+  background: #fff;
+  border-radius: 16px;
+  border: 2px solid var(--ink);
+  box-shadow: 8px 10px 0 rgba(10, 10, 10, 0.14);
+}
+.block--tint .infocard,
+.pagehero + * .infocard { background: #fff; }
+.infocard__index {
+  font-family: var(--font-head);
+  font-weight: 700;
+  font-size: 1.3rem;
+  color: rgba(10, 10, 10, 0.22);
+}
+.infocard__title {
+  margin: 10px 0 0;
+  font-size: var(--fs-h3);
+  text-transform: uppercase;
+  color: var(--blue);
+}
+.infocard__text { margin: 12px 0 0; color: rgba(10, 10, 10, 0.72); font-size: var(--fs-sm); }
+/* op rode secties: witte kaarten met blauwe kop blijven leesbaar */
+
+/* ============================================================
+   PHASELIST — genummerde rijen (support-fases op rode sectie)
+   ============================================================ */
+.phaselist {
+  list-style: none;
+  margin: clamp(32px, 4vw, 52px) 0 0;
+  padding: 0;
+  display: grid;
+  gap: clamp(16px, 2vw, 24px);
+}
+.phase {
+  display: grid;
+  grid-template-columns: clamp(64px, 8vw, 120px) minmax(0, 22ch) 1fr;
+  align-items: start;
+  gap: clamp(20px, 4vw, 64px);
+  padding: clamp(24px, 2.8vw, 38px) clamp(24px, 3vw, 44px);
+  background: #fff;
+  border: 2px solid var(--ink);
+  border-radius: 16px;
+  box-shadow: 8px 10px 0 rgba(10, 10, 10, 0.14);
+}
+.phase__num {
+  font-family: var(--font-head);
+  font-weight: 700;
+  font-size: clamp(1.6rem, 2.6vw, 2.6rem);
+  line-height: 1;
+  color: var(--ink);
+}
+.phase__eyebrow {
+  display: block;
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: var(--fs-sm);
+  letter-spacing: 0.02em;
+  color: rgba(10, 10, 10, 0.5);
+}
+.phase__title {
+  margin: 6px 0 0;
+  font-size: var(--fs-h3);
+  text-transform: uppercase;
+  color: var(--blue);
+}
+.phase__text {
+  margin: 0;
+  color: rgba(10, 10, 10, 0.72);
+  font-size: var(--fs-sm);
+}
+@media (max-width: 760px) {
+  .phase {
+    grid-template-columns: auto 1fr;
+    gap: 8px clamp(16px, 5vw, 24px);
+  }
+  .phase__num { grid-row: span 2; }
+  .phase__text { grid-column: 2; }
+}
+
+/* ============================================================
+   ABOUT-INTRO — editorial: overlappende beelden + grote kop
+   ============================================================ */
+.about-intro__grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: clamp(32px, 5vw, 80px);
+  align-items: center;
+}
+.about-intro__media {
+  position: relative;
+  min-height: clamp(320px, 42vw, 560px);
+}
+.about-intro__img {
+  margin: 0;
+  border-radius: 18px;
+  overflow: hidden;
+  border: 5px solid var(--cream);
+  box-shadow: 10px 12px 0 rgba(10, 10, 10, 0.22);
+}
+.about-intro__img img { display: block; width: 100%; height: 100%; object-fit: cover; }
+.about-intro__img--main { position: relative; z-index: 2; width: 76%; aspect-ratio: 4 / 5; }
+.about-intro__img--sub {
+  position: absolute;
+  right: 0;
+  bottom: -6%;
+  z-index: 1;
+  width: 52%;
+  aspect-ratio: 3 / 4;
+  transform: rotate(4deg);
+}
+.about-intro__body { text-align: left; }
+.about-intro__title { text-align: left; }
+.about-intro__hl { color: var(--yellow); }
+.about-intro__body .block__lead { margin: 18px 0 0; max-width: 52ch; }
+@media (max-width: 860px) {
+  .about-intro__grid { grid-template-columns: 1fr; gap: clamp(28px, 8vw, 44px); }
+  .about-intro__media { min-height: 0; padding-bottom: 24px; }
+  .about-intro__img--main { width: 84%; }
+  .about-intro__img--sub { width: 50%; bottom: -12px; }
+}
+
+/* ============================================================
+   BENEFITS — links sticky tekst, rechts scrollende kaarten
+   ============================================================ */
+.benefits { --stack-top: clamp(90px, 14vh, 150px); }
+.benefits__grid {
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+  gap: clamp(32px, 5vw, 80px);
+  align-items: start;
+}
+.benefits__intro {
+  position: sticky;
+  top: var(--stack-top);
+  text-align: left;
+}
+.benefits__intro .section-title { margin-top: 12px; }
+.benefits__intro .block__lead { margin: 16px 0 0; max-width: 46ch; }
+.benefits__intro .btn { margin-top: clamp(20px, 2.4vw, 32px); }
+/* kaarten stapelen over elkaar: elke kaart plakt vast net onder de vorige */
+.benefits__cards { display: block; }
+.benefitcard {
+  position: sticky;
+  top: var(--stack-top);
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: clamp(16px, 2vw, 28px);
+  align-items: start;
+  margin-bottom: clamp(28px, 6vh, 64px);
+  padding: clamp(24px, 2.6vw, 40px);
+  background: #fff;
+  border: 2px solid var(--ink);
+  border-radius: 16px;
+  box-shadow: 8px 12px 0 rgba(10, 10, 10, 0.18);
+}
+.benefitcard:nth-child(2) { top: calc(var(--stack-top) + 16px); }
+.benefitcard:nth-child(3) { top: calc(var(--stack-top) + 32px); }
+.benefitcard:nth-child(4) { top: calc(var(--stack-top) + 48px); }
+.benefitcard:nth-child(5) { top: calc(var(--stack-top) + 64px); }
+.benefitcard:nth-child(6) { top: calc(var(--stack-top) + 80px); }
+.benefitcard:last-child { margin-bottom: 0; }
+.benefitcard__num {
+  font-family: var(--font-head);
+  font-weight: 700;
+  font-size: clamp(1.4rem, 2.4vw, 2.2rem);
+  line-height: 1;
+  color: rgba(10, 10, 10, 0.22);
+}
+.benefitcard__title { font-size: var(--fs-h3); text-transform: uppercase; color: var(--blue); }
+.benefitcard__text { margin: 10px 0 0; color: rgba(10, 10, 10, 0.72); font-size: var(--fs-sm); }
+/* focus-effect: de blur loopt geleidelijk op met de afstand tot de actieve kaart.
+   Geen opacity-verandering, dus de kaarten blijven volledig zichtbaar (niet transparant).
+   JS zet de inline filter per kaart tijdens het scrollen. */
+.benefitcard { transition: filter 0.45s ease; }
+@media (max-width: 860px) {
+  .benefits__grid { grid-template-columns: 1fr; gap: clamp(28px, 6vw, 40px); }
+  .benefits__intro { position: static; }
+  .benefitcard,
+  .benefitcard:nth-child(n) { position: static; margin-bottom: clamp(16px, 4vw, 24px); }
+}
+
+/* ============================================================
+   STEPSLIDER — horizontale kaarten die van rechts uit beeld lopen
+   ============================================================ */
+.stepslider__head {
+  max-width: none;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: clamp(20px, 4vw, 48px);
+  text-align: left;
+}
+.stepslider__head .section-title,
+.stepslider__head .kicker { text-align: left; }
+.stepslider__head .block__lead { margin: 14px 0 0; max-width: 54ch; }
+.stepslider__nav { display: flex; gap: 12px; flex: none; padding-bottom: 6px; }
+.stepslider__arrow {
+  width: 54px;
+  height: 54px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 999px;
+  border: 2px solid var(--ink);
+  background: var(--cream);
+  color: var(--ink);
+  font-size: 1.5rem;
+  line-height: 1;
+  cursor: pointer;
+  transition: transform 0.14s ease, background 0.14s ease, color 0.14s ease, opacity 0.14s ease;
+}
+.stepslider__arrow:hover { background: var(--blue); color: var(--cream); transform: translateY(-2px); }
+.stepslider__arrow:disabled { opacity: 0.3; cursor: default; transform: none; }
+.stepslider__track {
+  display: flex;
+  gap: clamp(16px, 2vw, 28px);
+  /* zit in .block__inner, dus links lijnt vanzelf uit met de kop.
+     Alleen de rechterkant 'bloedt' tot buiten beeld zodat kaarten van rechts uit het scherm lopen. */
+  margin-right: calc(50% - 50vw);
+  padding-top: clamp(30px, 4vw, 48px);
+  padding-bottom: clamp(20px, 3vw, 30px);
+  padding-right: clamp(20px, 4vw, 48px);
+  overflow-x: auto;
+  scroll-snap-type: x proximity;
+  scroll-behavior: smooth;
+  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
+  cursor: grab;
+}
+.stepslider__track::-webkit-scrollbar { display: none; }
+.stepslider__track.is-dragging { cursor: grabbing; scroll-behavior: auto; scroll-snap-type: none; }
+.stepcard {
+  scroll-snap-align: start;
+  flex: 0 0 clamp(240px, 26vw, 320px);
+  display: flex;
+  flex-direction: column;
+  min-height: clamp(280px, 28vw, 350px);
+  padding: clamp(24px, 2.4vw, 34px);
+  background: #fff;
+  border: 2px solid var(--ink);
+  border-radius: 18px;
+  box-shadow: 8px 10px 0 rgba(10, 10, 10, 0.16);
+}
+.stepcard__icon {
+  width: 52px;
+  height: 52px;
+  border-radius: 12px;
+  background: var(--red);
+  box-shadow: 3px 3px 0 var(--red-dark);
+}
+.stepcard__num {
+  margin-top: auto;
+  font-family: var(--font-head);
+  font-weight: 700;
+  font-size: clamp(1.4rem, 2vw, 2rem);
+  line-height: 1;
+  color: rgba(10, 10, 10, 0.22);
+}
+.stepcard__title { margin: 8px 0 0; font-size: var(--fs-h3); text-transform: uppercase; color: var(--blue); }
+.stepcard__text { margin: 10px 0 0; color: rgba(10, 10, 10, 0.72); font-size: var(--fs-sm); }
+@media (max-width: 640px) {
+  .stepslider__head { flex-direction: column; align-items: flex-start; }
+  .stepcard { flex-basis: 78vw; }
+}
+
+/* ============================================================
+   FRANCHISE MATCH — tekst links, formulier rechts
+   ============================================================ */
+.matchsection__grid {
+  display: grid;
+  grid-template-columns: minmax(0, 0.82fr) minmax(0, 1.18fr);
+  gap: clamp(32px, 5vw, 72px);
+  align-items: start;
+}
+.matchsection__intro { text-align: left; position: sticky; top: clamp(90px, 12vh, 130px); }
+.matchsection__intro .kicker,
+.matchsection__intro .section-title { text-align: left; }
+.matchsection__intro .section-title { margin-top: 12px; }
+.matchsection__intro .block__lead { margin: 16px 0 0; max-width: 44ch; }
+.matchsection .form { max-width: none; margin: 0; }
+@media (max-width: 940px) {
+  .matchsection__grid { grid-template-columns: 1fr; gap: clamp(28px, 6vw, 40px); }
+  .matchsection__intro { position: static; }
+}
+
+/* korte afsluiter onder de succesverhalen (op blauw) */
+.storyfoot {
+  max-width: 62ch;
+  margin: clamp(28px, 4vw, 44px) auto 0;
+  text-align: center;
+  color: rgba(247, 244, 238, 0.85);
+  font-size: var(--fs-sm);
+}
+.storyfoot__link {
+  color: var(--yellow);
+  font-weight: 600;
+  border-bottom: 2px solid currentColor;
+  padding-bottom: 1px;
+}
+.storyfoot__link:hover { color: var(--cream); }
+
+/* ============================================================
+   SPLIT (tekst + beeld)
+   ============================================================ */
+.split {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  gap: clamp(28px, 5vw, 72px);
+  max-width: var(--wrap);
+  margin: 0 auto;
+}
+.split--flip .split__media { order: -1; }
+.split__media {
+  aspect-ratio: 4 / 3;
+  border-radius: 18px;
+  overflow: hidden;
+  border: 4px solid var(--ink);
+  box-shadow: 10px 12px 0 rgba(10, 10, 10, 0.14);
+}
+.split__media img { width: 100%; height: 100%; object-fit: cover; }
+.split__body p { margin: 16px 0 0; color: rgba(10, 10, 10, 0.78); }
+
+/* ============================================================
+   CHECKLIST
+   ============================================================ */
+.checklist { display: grid; gap: 14px; margin-top: clamp(20px, 3vw, 30px); }
+.checklist li {
+  position: relative;
+  padding-left: 40px;
+  font-size: var(--fs-body);
+  color: rgba(10, 10, 10, 0.82);
+}
+.checklist li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 1px;
+  width: 26px;
+  height: 26px;
+  border-radius: 7px;
+  background: var(--red)
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23F7F4EE' stroke-width='3.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20 6 9 17l-5-5'/%3E%3C/svg%3E")
+    center / 15px no-repeat;
+}
+.checklist--light li { color: rgba(247, 244, 238, 0.9); }
+
+/* ============================================================
+   VERGELIJKING (past wel / past minder)
+   ============================================================ */
+.compare { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(20px, 3vw, 34px); }
+.compare__col {
+  padding: clamp(26px, 3vw, 40px);
+  border-radius: 18px;
+  border: 2px solid var(--ink);
+}
+.compare__col--yes { background: rgba(0, 85, 184, 0.06); }
+.compare__col--no { background: rgba(210, 0, 27, 0.06); }
+.compare__title {
+  font-size: var(--fs-h3);
+  text-transform: uppercase;
+  color: var(--blue);
+  margin-bottom: 18px;
+}
+.compare__col--no .compare__title { color: var(--red); }
+.compare__list { display: grid; gap: 12px; }
+.compare__list li {
+  position: relative;
+  padding-left: 34px;
+  color: rgba(10, 10, 10, 0.8);
+  font-size: var(--fs-sm);
+}
+.compare__list li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 2px;
+  width: 22px;
+  height: 22px;
+  border-radius: 6px;
+  background: var(--blue)
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23F7F4EE' stroke-width='3.4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20 6 9 17l-5-5'/%3E%3C/svg%3E")
+    center / 13px no-repeat;
+}
+.compare__col--no .compare__list li::before {
+  background: var(--red)
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23F7F4EE' stroke-width='3.4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 6l12 12M18 6 6 18'/%3E%3C/svg%3E")
+    center / 13px no-repeat;
+}
+.compare__foot { margin-top: clamp(24px, 3vw, 36px); text-align: center; font-size: var(--fs-lead); color: rgba(10, 10, 10, 0.72); }
+
+/* ============================================================
+   STAPPENPLAN (genummerde tijdlijn)
+   ============================================================ */
+.steps { max-width: 820px; margin: clamp(32px, 4vw, 48px) auto 0; display: grid; gap: 0; }
+.step {
+  position: relative;
+  display: grid;
+  grid-template-columns: 64px 1fr;
+  gap: clamp(16px, 2vw, 28px);
+  padding: clamp(20px, 2.4vw, 30px) 0;
+  border-top: 2px solid var(--line);
+}
+.step:last-child { border-bottom: 2px solid var(--line); }
+.step__num {
+  font-family: var(--font-head);
+  font-weight: 700;
+  font-size: clamp(1.8rem, 3vw, 2.6rem);
+  line-height: 1;
+  color: var(--red);
+}
+.step__title { font-size: var(--fs-h3); text-transform: uppercase; color: var(--blue); }
+.step__text { margin: 8px 0 0; color: rgba(10, 10, 10, 0.72); font-size: var(--fs-sm); }
+
+/* ============================================================
+   FAQ (native details/summary)
+   ============================================================ */
+.faq { max-width: 820px; margin: clamp(32px, 4vw, 48px) auto 0; }
+.faq__item {
+  border-bottom: 2px solid var(--line);
+}
+.faq__item summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  padding: clamp(18px, 2vw, 26px) 0;
+  cursor: pointer;
+  list-style: none;
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: clamp(1.05rem, 1.5vw, 1.3rem);
+  letter-spacing: -0.02em;
+  color: var(--ink);
+}
+.faq__item summary::-webkit-details-marker { display: none; }
+.faq__item summary::after {
+  content: "";
+  flex: 0 0 auto;
+  width: 26px;
+  height: 26px;
+  background: var(--red)
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23F7F4EE' stroke-width='3' stroke-linecap='round'%3E%3Cpath d='M12 5v14M5 12h14'/%3E%3C/svg%3E")
+    center / 15px no-repeat;
+  border-radius: 7px;
+  transition: transform 0.25s ease;
+}
+.faq__item[open] summary::after { transform: rotate(135deg); }
+.faq__item p {
+  margin: 0 0 clamp(20px, 2vw, 26px);
+  max-width: 62ch;
+  color: rgba(10, 10, 10, 0.74);
+}
+
+/* ============================================================
+   FORMULIER (contact, franchise match, brochure)
+   ============================================================ */
+.form {
+  max-width: 720px;
+  margin: 0 auto;
+  background: #fff;
+  border: 2px solid var(--ink);
+  border-radius: 18px;
+  box-shadow: 10px 12px 0 rgba(10, 10, 10, 0.14);
+  padding: clamp(26px, 3.4vw, 46px);
+}
+.form__row { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+.field { display: flex; flex-direction: column; gap: 8px; margin-bottom: 18px; }
+.field--full { grid-column: 1 / -1; }
+.field label {
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: var(--fs-sm);
+  letter-spacing: -0.02em;
+  color: var(--ink);
+}
+.field input,
+.field select,
+.field textarea {
+  font-family: var(--font-body);
+  font-size: var(--fs-body);
+  color: var(--ink);
+  background: var(--cream);
+  border: 2px solid var(--ink);
+  border-radius: 10px;
+  padding: 13px 16px;
+}
+.field textarea { min-height: 140px; resize: vertical; }
+.field input:focus,
+.field select:focus,
+.field textarea:focus { outline: none; border-color: var(--blue); }
+.field--check {
+  flex-direction: row;
+  align-items: flex-start;
+  gap: 12px;
+}
+.field--check input { width: 22px; height: 22px; flex: 0 0 auto; accent-color: var(--red); }
+.field--check label {
+  text-transform: none;
+  font-family: var(--font-body);
+  font-weight: 400;
+  font-size: var(--fs-sm);
+  color: rgba(10, 10, 10, 0.72);
+  line-height: 1.5;
+}
+.form__note { margin: 4px 0 20px; font-size: var(--fs-sm); color: rgba(10, 10, 10, 0.6); }
+.form__ok {
+  margin-top: 18px;
+  padding: 16px 20px;
+  border-radius: 10px;
+  background: rgba(0, 85, 184, 0.08);
+  border: 2px solid var(--blue);
+  color: var(--blue);
+  font-weight: 600;
+}
+.form__ok[hidden] { display: none; }
+
+/* ============================================================
+   CONTACTMETHODES
+   ============================================================ */
+.contactcard { text-align: left; }
+.contactcard__label {
+  font-family: var(--font-head);
+  font-weight: 700;
+  font-size: var(--fs-sm);
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  color: var(--red);
+}
+.contactcard h3 { margin: 8px 0 10px; font-size: var(--fs-h3); text-transform: uppercase; color: var(--blue); }
+.contactcard p { margin: 0 0 6px; color: rgba(10, 10, 10, 0.72); font-size: var(--fs-sm); }
+.contactcard a { font-weight: 600; color: var(--red); border-bottom: 1px solid currentColor; }
+
+/* openingstijden */
+.hours { display: grid; gap: 10px; margin-top: clamp(20px, 3vw, 30px); max-width: 460px; }
+.hours__row {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  padding-bottom: 10px;
+  border-bottom: 2px solid var(--line);
+  font-size: var(--fs-body);
+}
+.hours__day { font-weight: 600; color: var(--ink); }
+.hours__time { color: rgba(10, 10, 10, 0.66); }
+
+/* CTA-ondersteuning */
+.finalcta__sub {
+  max-width: 52ch;
+  margin: 0 auto clamp(28px, 4vw, 40px);
+  font-size: var(--fs-lead);
+  color: rgba(247, 244, 238, 0.92);
+}
+.actions-center { justify-content: center; }
+.block__note { text-align: center; margin-top: clamp(28px, 3vw, 40px); }
+.block__inner--spaced { margin-top: clamp(40px, 5vw, 64px); }
+
+/* ============================================================
+   SLOT-BALK (rustige tekstlinks onder een CTA)
+   ============================================================ */
+.exitbar {
+  max-width: var(--wrap);
+  margin: 0 auto;
+  padding: clamp(24px, 3vw, 36px) clamp(20px, 4vw, 48px);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 14px 40px;
+  border-top: 2px solid rgba(247, 244, 238, 0.24);
+}
+
+/* ============================================================
+   SITE-FOOTER (subpagina's)
+   ============================================================ */
+.sitefoot {
+  background: url("../assets/img/bg-blue.jpg") center / cover no-repeat, var(--blue);
+  color: rgba(247, 244, 238, 0.85);
+  padding: clamp(56px, 7vw, 90px) clamp(20px, 4vw, 48px) 40px;
+}
+.sitefoot__grid {
+  max-width: var(--wrap);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1.6fr 1fr 1fr 1fr;
+  gap: clamp(28px, 4vw, 56px);
+}
+.sitefoot__brand { max-width: 26rem; }
+.sitefoot__logo img { height: 54px; width: auto; }
+.sitefoot__brand p { margin: 16px 0 0; font-size: var(--fs-sm); }
+.sitefoot__col h3 {
+  font-size: var(--fs-sm);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--yellow);
+  margin-bottom: 16px;
+}
+.sitefoot__col a { display: block; padding: 7px 0; color: rgba(247, 244, 238, 0.9); font-weight: 500; transition: color 0.18s ease, padding-left 0.18s ease; }
+.sitefoot__col a:hover { color: var(--yellow); padding-left: 5px; }
+.sitefoot__base {
+  max-width: var(--wrap);
+  margin: clamp(40px, 5vw, 64px) auto 0;
+  padding-top: 24px;
+  border-top: 2px solid rgba(247, 244, 238, 0.18);
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 10px;
+  font-size: var(--fs-sm);
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  color: rgba(247, 244, 238, 0.6);
+}
+
+/* ============================================================
+   OVER ONS — KERNWAARDEN (waarom-sectie, blauwe variant)
+   ============================================================ */
+.waarom--blue {
+  background: url("../assets/img/bg-blue.jpg") center / cover no-repeat, var(--blue);
+}
+
+/* ============================================================
+   OVER ONS — INTRO MET OVERLAPPENDE FOTOKAARTEN
+   ============================================================ */
+.about-lead {
+  background: var(--cream);
+  text-align: center;
+  overflow: hidden;
+}
+.about-lead__inner { max-width: var(--wrap); margin: 0 auto; }
+.about-lead__title { margin: 14px auto 0; max-width: 18ch; }
+.about-lead__sub {
+  margin: clamp(18px, 2.4vw, 26px) auto 0;
+  max-width: 52ch;
+  font-size: var(--fs-lead);
+  color: rgba(10, 10, 10, 0.72);
+}
+.cardstack {
+  --card-w: clamp(200px, 24vw, 320px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: clamp(16px, 3vw, 56px);
+  margin-top: clamp(44px, 6vw, 84px);
+}
+.cardstack__item {
+  position: relative;
+  flex: 0 0 var(--card-w);
+  width: var(--card-w);
+  aspect-ratio: 3 / 4;
+  margin: 0;
+  border-radius: 20px;
+  overflow: hidden;
+  border: 5px solid var(--cream);
+  box-shadow: 10px 12px 0 rgba(10, 10, 10, 0.22);
+  background: var(--card);
+}
+.cardstack__item img { width: 100%; height: 100%; object-fit: cover; }
+/* stapel-volgorde tijdens de open-animatie: midden bovenop */
+.cardstack__item--l { z-index: 1; }
+.cardstack__item--r { z-index: 2; }
+.cardstack__item--c { z-index: 3; }
+
+/* ============================================================
+   OVER ONS — STATEMENT MET PRODUCT EN TWEE-KOLOMS TEKST
+   ============================================================ */
+.about-story__inner { max-width: var(--wrap); margin: 0 auto; }
+.about-story__head { text-align: center; }
+.about-story__title { margin-inline: auto; }
+.about-story__grid {
+  margin-top: clamp(32px, 5vw, 64px);
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: clamp(28px, 5vw, 72px);
+  align-items: center;
+}
+.about-story__media { margin: 0 auto; max-width: clamp(240px, 28vw, 360px); }
+.about-story__media img {
+  width: 100%;
+  height: auto;
+  display: block;
+  filter: drop-shadow(12px 14px 0 rgba(10, 10, 10, 0.16));
+}
+.about-story__body { max-width: 48ch; padding-bottom: clamp(6px, 3vw, 40px); }
+.about-story__body p { margin: 0 0 1.25em; color: rgba(10, 10, 10, 0.78); }
+.about-story__body p:last-child { margin-bottom: 0; }
+
+/* ============================================================
+   OVER ONS — INSTAGRAM-MARQUEE ("vul je feed")
+   ============================================================ */
+.about-feed { background: var(--cream); padding: var(--pad-y) 0; }
+.about-feed__head {
+  max-width: var(--wrap);
+  margin: 0 auto clamp(30px, 4vw, 52px);
+  padding: 0 clamp(20px, 4vw, 48px);
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+.about-feed__handle {
+  font-family: var(--font-head);
+  font-weight: 700;
+  font-size: var(--fs-sm);
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  color: var(--cream);
+  background: var(--red);
+  padding: 8px 16px;
+  border-radius: 999px;
+  box-shadow: 4px 4px 0 var(--red-dark);
+}
+.about-feed__marquee { padding: 0; }
+.about-feed__marquee .marquee__track { gap: clamp(12px, 1.6vw, 20px); align-items: center; }
+.feedtile {
+  flex: 0 0 auto;
+  width: clamp(180px, 20vw, 264px);
+  aspect-ratio: 1 / 1;
+  margin: 0;
+  border-radius: 16px;
+  overflow: hidden;
+  border: 4px solid var(--ink);
+  box-shadow: 6px 8px 0 rgba(10, 10, 10, 0.18);
+}
+.feedtile img { width: 100%; height: 100%; object-fit: cover; }
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+@media (max-width: 960px) {
+  .pagehero__inner { grid-template-columns: 1fr; }
+  .pagehero__media { order: -1; aspect-ratio: 16 / 10; }
+  .cardgrid { grid-template-columns: 1fr 1fr; }
+  .sitefoot__grid { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 760px) {
+  .story-split { grid-template-columns: 1fr; }
+  .split, .split--flip { grid-template-columns: 1fr; }
+  .split--flip .split__media { order: 0; }
+  .cardgrid, .cardgrid--2, .compare { grid-template-columns: 1fr; }
+  .form__row { grid-template-columns: 1fr; }
+  .sitefoot__grid { grid-template-columns: 1fr; }
+
+  /* over ons: kleinere kaarten en minder spreiding zodat drie foto's op mobiel passen */
+  .cardstack { --card-w: 27vw; gap: 8px; }
+  .cardstack__item { border-width: 4px; }
+
+  /* over ons: statement onder elkaar, product boven de tekst */
+  .about-story__grid { grid-template-columns: 1fr; align-items: start; }
+  .about-story__media { max-width: 300px; }
+}
