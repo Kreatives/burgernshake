@@ -895,7 +895,10 @@
 }
 /* productkwaliteit-slider (over ons): stepcard-variant met icoon boven de
    titel, een rode lead-regel en het nummer rechtsboven. */
-.valuecard { position: relative; min-height: clamp(360px, 30vw, 440px); }
+.valuecard { position: relative; flex: 0 0 clamp(300px, 27vw, 420px); min-height: clamp(380px, 30vw, 460px); }
+/* checkers flush tegen de boven- en onderrand van de sectie (block-padding eromheen weg) */
+.block--blue.stepslider { padding-top: 0; padding-bottom: 0; }
+.block--blue.stepslider > .block__inner { padding-top: var(--pad-y); padding-bottom: var(--pad-y); }
 .valuecard .stepcard__title { margin-top: 20px; padding-right: 40px; }
 .valuecard__lead { margin: 8px 0 0; font-weight: 700; color: var(--red); font-size: var(--fs-sm); }
 .valuecard .stepcard__text { margin-top: 10px; }

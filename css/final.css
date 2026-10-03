@@ -104,7 +104,7 @@
 }
 .menu--final .dish:hover { box-shadow: 12px 14px 0 rgba(10, 10, 10, 0.14); }
 .menu--final .menu__scatter .dish:nth-child(odd) {
-  margin-top: clamp(28px, 4.5vw, 70px);
+  margin-top: 0;
 }
 
 /* ============================================================

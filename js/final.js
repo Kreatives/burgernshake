@@ -6,7 +6,7 @@
    globals of dubbele kaart-initialisatie.
    ============================================================ */
 
-console.log("%cBurger 'n Shake — final.js v9 geladen", "color:#0055B8;font-weight:bold");
+console.log("%cBurger 'n Shake — final.js v10 geladen", "color:#0055B8;font-weight:bold");
 
 const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
@@ -38,6 +38,23 @@ if (!reduceMotion && window.Lenis) {
     requestAnimationFrame(raf);
   }
 }
+
+/* ---------- cross-page anchor: scroll naar #hash na load (Lenis reset anders naar top;
+   meerdere pogingen omdat laat-ladende beelden/video de positie nog verschuiven) ---------- */
+(function hashScroll() {
+  if (!window.location.hash) return;
+  let target;
+  try { target = document.querySelector(window.location.hash); } catch (e) { return; }
+  if (!target) return;
+  const go = () => {
+    if (window.ScrollTrigger) ScrollTrigger.refresh();
+    if (lenis) lenis.scrollTo(target, { offset: 0, immediate: true, force: true });
+    else target.scrollIntoView();
+  };
+  const schedule = () => [120, 500, 1100, 2000].forEach((d) => setTimeout(go, d));
+  if (document.readyState === "complete") schedule();
+  else window.addEventListener("load", schedule);
+})();
 
 /* ---------- vestigingen kaart (Leaflet) ---------- */
 (function locatorMap() {
