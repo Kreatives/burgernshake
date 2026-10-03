@@ -741,6 +741,15 @@ h1, h2, h3,
   color: var(--red) !important;
   border-bottom: 1px solid currentColor;
 }
+.loc-pop__mail {
+  display: block;
+  margin: -4px 0 12px;
+  font-weight: 600;
+  font-size: var(--fs-sm);
+  color: var(--blue) !important;
+  border-bottom: 1px solid currentColor;
+  width: fit-content;
+}
 .loc-pop__actions { display: flex; gap: 8px; }
 .loc-pop__btn {
   display: inline-block;

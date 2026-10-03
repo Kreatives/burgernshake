@@ -200,6 +200,23 @@
   padding-bottom: 1px;
 }
 .storycard__more:hover { color: var(--ink); }
+.storycard__text { margin: 10px 0 0; color: rgba(10, 10, 10, 0.72); font-size: var(--fs-sm); line-height: 1.6; }
+
+/* blog-artikel (succesverhalen) */
+.article { background: var(--cream); }
+.article__inner { max-width: 760px; margin: 0 auto; padding: clamp(48px, 7vw, 96px) clamp(20px, 4vw, 48px); }
+.article__tag {
+  margin: 0 0 clamp(26px, 4vw, 40px);
+  padding-bottom: clamp(20px, 3vw, 28px);
+  border-bottom: 2px solid rgba(10, 10, 10, 0.12);
+  font-weight: 700;
+  color: var(--red);
+  font-size: var(--fs-lead);
+  line-height: 1.4;
+}
+.article__body p { margin: 0 0 1.35em; color: rgba(10, 10, 10, 0.82); font-size: var(--fs-lead); line-height: 1.75; }
+.article__body p:last-child { margin-bottom: 0; }
+.article__back { margin-top: clamp(32px, 5vw, 52px); display: flex; gap: 16px; flex-wrap: wrap; }
 .block__inner { max-width: var(--wrap); margin: 0 auto; }
 .block__head { max-width: 760px; margin: 0 auto clamp(32px, 4.5vw, 56px); }
 .block__head--center { text-align: center; }
@@ -221,6 +238,17 @@
   background: rgba(255, 214, 0, 0.12);
   font-size: var(--fs-sm);
   color: rgba(10, 10, 10, 0.75);
+}
+.story-splits { display: grid; gap: clamp(44px, 6vw, 80px); }
+.story-split__head .kicker { margin-bottom: 14px; }
+.story-split__tag {
+  margin: 18px 0 0;
+  font-weight: 700;
+  line-height: 1.4;
+  color: var(--yellow);
+}
+@media (max-width: 860px) {
+  .story-split { grid-template-columns: 1fr; gap: clamp(16px, 4vw, 24px); }
 }
 
 /* ============================================================
@@ -450,14 +478,16 @@
 .stepslider__track {
   display: flex;
   gap: clamp(16px, 2vw, 28px);
-  /* zit in .block__inner, dus links lijnt vanzelf uit met de kop.
-     Alleen de rechterkant 'bloedt' tot buiten beeld zodat kaarten van rechts uit het scherm lopen. */
+  /* full-bleed naar beide schermranden: de eerste kaart lijnt uit met de kop
+     (padding-left = content-inset) en kaarten lopen aan beide kanten netjes
+     ONDER de schermrand door i.p.v. afgeknipt te worden op de content-marge. */
+  margin-left: calc(50% - 50vw);
   margin-right: calc(50% - 50vw);
+  padding-left: calc(50vw - 50%);
   padding-top: clamp(30px, 4vw, 48px);
   padding-bottom: clamp(20px, 3vw, 30px);
   padding-right: clamp(20px, 4vw, 48px);
   overflow-x: auto;
-  scroll-snap-type: x proximity;
   scroll-behavior: smooth;
   scrollbar-width: none;
   -webkit-overflow-scrolling: touch;
@@ -623,7 +653,17 @@
     url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23F7F4EE' stroke-width='3.4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 6l12 12M18 6 6 18'/%3E%3C/svg%3E")
     center / 13px no-repeat;
 }
+.compare__list li::first-letter { text-transform: uppercase; }
 .compare__foot { margin-top: clamp(24px, 3vw, 36px); text-align: center; font-size: var(--fs-lead); color: rgba(10, 10, 10, 0.72); }
+/* Franchise Match-verwijzing in lopende tekst: in het normale lettertype i.p.v. de display-caps. */
+.compare__foot .textlink {
+  font-family: var(--font-body);
+  font-weight: 600;
+  text-transform: none;
+  letter-spacing: 0;
+  font-size: inherit;
+  border-bottom-width: 2px;
+}
 
 /* ============================================================
    STAPPENPLAN (genummerde tijdlijn)
@@ -852,6 +892,22 @@
    ============================================================ */
 .waarom--blue {
   background: url("../assets/img/bg-blue.jpg") center / cover no-repeat, var(--blue);
+}
+/* productkwaliteit-slider (over ons): stepcard-variant met icoon boven de
+   titel, een rode lead-regel en het nummer rechtsboven. */
+.valuecard { position: relative; min-height: clamp(360px, 30vw, 440px); }
+.valuecard .stepcard__title { margin-top: 20px; padding-right: 40px; }
+.valuecard__lead { margin: 8px 0 0; font-weight: 700; color: var(--red); font-size: var(--fs-sm); }
+.valuecard .stepcard__text { margin-top: 10px; }
+.valuecard__num {
+  position: absolute;
+  top: clamp(22px, 2.2vw, 32px);
+  right: clamp(22px, 2.2vw, 32px);
+  font-family: var(--font-head);
+  font-weight: 700;
+  font-size: clamp(1.4rem, 2vw, 2rem);
+  line-height: 1;
+  color: rgba(10, 10, 10, 0.22);
 }
 
 /* ============================================================

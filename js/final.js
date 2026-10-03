@@ -6,7 +6,7 @@
    globals of dubbele kaart-initialisatie.
    ============================================================ */
 
-console.log("%cBurger 'n Shake — final.js v8 geladen", "color:#0055B8;font-weight:bold");
+console.log("%cBurger 'n Shake — final.js v9 geladen", "color:#0055B8;font-weight:bold");
 
 const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
@@ -54,7 +54,7 @@ if (!reduceMotion && window.Lenis) {
 
   const markers = [];
   items.forEach((btn) => {
-    const { name, street, zip, phone, lat, lng } = btn.dataset;
+    const { name, street, zip, phone, email, lat, lng } = btn.dataset;
     const icon = L.divIcon({
       className: "loc-pin",
       html: "<span></span>",
@@ -64,13 +64,14 @@ if (!reduceMotion && window.Lenis) {
     });
     const marker = L.marker([+lat, +lng], { icon, title: name }).addTo(map);
 
-    const tel = phone.replace(/[^\d+]/g, "");
+    const tel = (phone || "").replace(/[^\d+]/g, "");
     const route = encodeURIComponent(name + " " + street + " " + zip);
     marker.bindPopup(
       '<div class="loc-pop">' +
         "<h3>" + name + "</h3>" +
         '<p class="loc-pop__addr">' + street + "<br>" + zip + "</p>" +
-        '<a class="loc-pop__tel" href="tel:' + tel + '">' + phone + "</a>" +
+        (phone ? '<a class="loc-pop__tel" href="tel:' + tel + '">' + phone + "</a>" : "") +
+        (email ? '<a class="loc-pop__mail" href="mailto:' + email + '">' + email + "</a>" : "") +
         '<div class="loc-pop__actions">' +
           '<a class="loc-pop__btn" href="#bestel">Bezorgen</a>' +
           '<a class="loc-pop__btn loc-pop__btn--alt" href="#bestel">Afhalen</a>' +
