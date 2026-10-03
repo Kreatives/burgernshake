@@ -108,7 +108,7 @@
 }
 .burgermarq--yellow { background: var(--yellow); color: var(--ink); }
 .burgermarq--blue { background: var(--blue); color: var(--cream); border-color: var(--cream); }
-.burgermarq--red { background: var(--red); color: var(--cream); border-color: var(--cream); }
+.burgermarq--red { background: var(--red); color: var(--cream); border-color: var(--red); }
 
 /* tekstlink met pijl (secundaire routes) */
 .textlink {
@@ -899,6 +899,8 @@
 /* checkers flush tegen de boven- en onderrand van de sectie (block-padding eromheen weg) */
 .block--blue.stepslider { padding-top: 0; padding-bottom: 0; }
 .block--blue.stepslider > .block__inner { padding-top: var(--pad-y); padding-bottom: var(--pad-y); }
+/* dambord-strips full width (buiten de horizontale block-padding) */
+.block--blue.stepslider > .checker { margin-left: calc(50% - 50vw); margin-right: calc(50% - 50vw); }
 .valuecard .stepcard__title { margin-top: 20px; padding-right: 40px; }
 .valuecard__lead { margin: 8px 0 0; font-weight: 700; color: var(--red); font-size: var(--fs-sm); }
 .valuecard .stepcard__text { margin-top: 10px; }
