@@ -15,7 +15,7 @@
   <link rel="stylesheet" href="css/concept-2.css" />
   <link rel="stylesheet" href="css/concept-3.css" />
   <link rel="stylesheet" href="css/final.css?v=4" />
-  <link rel="stylesheet" href="css/pages.css?v=8" />
+  <link rel="stylesheet" href="css/pages.css?v=9" />
 </head>
 <body class="page">
 
@@ -29,7 +29,7 @@
       </a>
       <nav class="pillnav" aria-label="Hoofdmenu">
         <a href="final.html">Home</a>
-        <a href="final.html#menu">Menu</a>
+        <a href="menu.html">Menu</a>
         <a href="over-ons.html">Over ons</a>
         <a href="franchise.html">Franchise</a>
         <a href="contact.html">Contact</a>
@@ -44,7 +44,7 @@
       <span class="kicker lp-hero__kicker">Burger 'n Shake</span>
       <h1 class="lp-hero__title">Burger 'n Shake Leiden</h1>
       <div class="lp-hero__actions">
-        <a href="final.html#menu" class="btn btn--yellow">Menu</a>
+        <a href="menu.html" class="btn btn--yellow">Menu</a>
         <a href="contact.html#werken" class="btn btn--alt">Vacatures</a>
           <a href="tel:0712400013" class="btn btn--alt">Bellen</a>
         <a href="mailto:leiden@burgernshake.nl" class="btn btn--alt">E-mail</a>
@@ -90,19 +90,24 @@
     </div>
   </section>
 
-  <!-- FOTO'S -->
-  <section class="block block--blue" aria-label="Sfeerbeelden">
-    <div class="block__head block__head--center">
+  <!-- FOTO'S — doorlopende marquee -->
+  <section class="photostrip-band photostrip-band--blue lp-feed" aria-label="Sfeerbeelden">
+    <div class="block__head block__head--center lp-feed__head">
       <span class="kicker">Jullie momenten</span>
       <h2 class="section-title">Proef het bij Leiden</h2>
     </div>
-    <div class="lp-gallery">
-      <figure><img src="assets/img/brand/brand-3.jpg" alt="Burger 'n Shake Leiden" loading="lazy" /></figure>
-      <figure><img src="assets/img/brand/brand-6.jpg" alt="Burger 'n Shake Leiden" loading="lazy" /></figure>
-      <figure><img src="assets/img/brand/brand-7.jpg" alt="Burger 'n Shake Leiden" loading="lazy" /></figure>
-      <figure><img src="assets/img/brand/brand-1.jpg" alt="Burger 'n Shake Leiden" loading="lazy" /></figure>
-      <figure><img src="assets/img/brand/brand-9.jpg" alt="Burger 'n Shake Leiden" loading="lazy" /></figure>
-      <figure><img src="assets/img/brand/brand-4.jpg" alt="Burger 'n Shake Leiden" loading="lazy" /></figure>
+    <div class="marquee photostrip" aria-label="Sfeerbeelden van Burger 'n Shake">
+      <div class="marquee__track">
+        <figure class="photo"><img src="assets/img/brand/brand-3.jpg" alt="Burger 'n Shake Leiden" loading="lazy" /></figure>
+        <figure class="photo"><img src="assets/img/brand/brand-6.jpg" alt="Burger 'n Shake Leiden" loading="lazy" /></figure>
+        <figure class="photo"><img src="assets/img/brand/brand-7.jpg" alt="Burger 'n Shake Leiden" loading="lazy" /></figure>
+        <figure class="photo"><img src="assets/img/brand/brand-1.jpg" alt="Burger 'n Shake Leiden" loading="lazy" /></figure>
+        <figure class="photo"><img src="assets/img/brand/brand-9.jpg" alt="Burger 'n Shake Leiden" loading="lazy" /></figure>
+        <figure class="photo"><img src="assets/img/brand/brand-4.jpg" alt="Burger 'n Shake Leiden" loading="lazy" /></figure>
+        <figure class="photo"><img src="assets/img/brand/brand-2.jpg" alt="Burger 'n Shake Leiden" loading="lazy" /></figure>
+        <figure class="photo"><img src="assets/img/brand/brand-5.jpg" alt="Burger 'n Shake Leiden" loading="lazy" /></figure>
+        <figure class="photo"><img src="assets/img/brand/brand-8.jpg" alt="Burger 'n Shake Leiden" loading="lazy" /></figure>
+      </div>
     </div>
   </section>
 
@@ -115,7 +120,7 @@
       </div>
       <nav class="sitefoot__col" aria-label="Ontdek">
         <h3>Ontdek</h3>
-        <a href="final.html#menu">Menu</a>
+        <a href="menu.html">Menu</a>
         <a href="over-ons.html">Over ons</a>
         <a href="final.html#locaties">Vestigingen</a>
         <a href="franchise.html">Franchise</a>
@@ -162,6 +167,6 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/ScrollTrigger.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/SplitText.min.js"></script>
   <script src="https://unpkg.com/lenis@1.1.13/dist/lenis.min.js"></script>
-  <script src="js/final.js?v=5"></script>
+  <script src="js/final.js?v=6"></script>
 </body>
 </html>

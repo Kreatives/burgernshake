@@ -6,7 +6,7 @@
    globals of dubbele kaart-initialisatie.
    ============================================================ */
 
-console.log("%cBurger 'n Shake — final.js v11 geladen", "color:#0055B8;font-weight:bold");
+console.log("%cBurger 'n Shake — final.js v12 geladen", "color:#0055B8;font-weight:bold");
 
 const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
@@ -444,6 +444,29 @@ if (window.gsap && !reduceMotion) {
       if (ok) { ok.hidden = false; ok.scrollIntoView({ behavior: "smooth", block: "center" }); }
     });
   });
+})();
+
+/* ---------- menu-pagina: categorie-tabs ---------- */
+(function menuTabs() {
+  const bar = document.querySelector("[data-mtabs]");
+  if (!bar) return;
+  const tabs = Array.from(bar.querySelectorAll(".mtab"));
+  const panels = Array.from(document.querySelectorAll(".mpanel"));
+  const activate = (slug) => {
+    tabs.forEach((t) => {
+      const on = t.dataset.mtab === slug;
+      t.classList.toggle("is-active", on);
+      t.setAttribute("aria-selected", on ? "true" : "false");
+    });
+    panels.forEach((p) => p.classList.toggle("is-active", p.dataset.mpanel === slug));
+    if (window.ScrollTrigger) ScrollTrigger.refresh();
+  };
+  tabs.forEach((t) =>
+    t.addEventListener("click", () => {
+      activate(t.dataset.mtab);
+      t.scrollIntoView({ block: "nearest", inline: "center", behavior: "smooth" });
+    })
+  );
 })();
 
 /* ---------- ScrollTrigger herberekenen na laden fonts/beeld/video ---------- */

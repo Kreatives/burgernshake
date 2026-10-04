@@ -1127,24 +1127,11 @@
 .lp-info__value a { color: var(--cream); border-bottom: 1px solid rgba(247, 244, 238, 0.4); }
 .lp-info__value a:hover { border-color: var(--yellow); color: var(--yellow); }
 
-/* fotogrid onderaan */
-.lp-gallery {
-  max-width: var(--wrap);
-  margin: 0 auto;
-  padding: 0 clamp(20px, 4vw, 48px) clamp(48px, 7vw, 96px);
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: clamp(12px, 1.6vw, 20px);
-}
-.lp-gallery figure {
-  margin: 0;
-  aspect-ratio: 4 / 5;
-  overflow: hidden;
-  border-radius: 14px;
-  border: 2px solid var(--ink);
-}
-.lp-gallery img { width: 100%; height: 100%; object-fit: cover; }
-@media (max-width: 640px) { .lp-gallery { grid-template-columns: repeat(2, 1fr); } }
+/* fotostrip-band (doorlopende marquee) onderaan de locatiepagina */
+.lp-feed { padding: clamp(48px, 7vw, 96px) 0 clamp(28px, 4vw, 52px); }
+.lp-feed__head { max-width: var(--wrap); margin: 0 auto clamp(12px, 2vw, 24px); padding: 0 clamp(20px, 4vw, 48px); }
+.photostrip-band--blue .kicker { color: var(--yellow); }
+.photostrip-band--blue .section-title { color: var(--cream); }
 
 /* footer: vestigingenlijst */
 .sitefoot__spots {
@@ -1169,3 +1156,95 @@
 }
 .sitefoot__spotgrid a { color: rgba(247, 244, 238, 0.78); font-size: var(--fs-sm); }
 .sitefoot__spotgrid a:hover { color: var(--cream); }
+
+/* ============================================================
+   MENU-PAGINA (tabs + itemkaarten)
+   ============================================================ */
+.menuhero { padding-bottom: clamp(40px, 6vw, 72px); }
+.menuhero__inner { grid-template-columns: 1fr; }
+.menuhero .pagehero__copy { max-width: 48rem; }
+
+.menu-tabs .block__inner { max-width: var(--wrap); }
+.mtabs {
+  display: flex;
+  gap: 10px;
+  overflow-x: auto;
+  padding-bottom: 6px;
+  margin-bottom: clamp(28px, 4vw, 44px);
+  scrollbar-width: none;
+  position: sticky;
+  top: 0;
+  z-index: 5;
+  background: var(--cream);
+  padding-top: clamp(12px, 2vw, 20px);
+}
+.mtabs::-webkit-scrollbar { display: none; }
+.mtab {
+  flex: 0 0 auto;
+  font-family: var(--font-head);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.01em;
+  font-size: var(--fs-sm);
+  padding: 11px 20px;
+  border: 2px solid var(--ink);
+  border-radius: 999px;
+  background: #fff;
+  color: var(--ink);
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background 0.16s ease, color 0.16s ease, transform 0.12s ease;
+}
+.mtab:hover { transform: translateY(-2px); }
+.mtab.is-active { background: var(--blue); color: var(--cream); }
+
+.mpanel { display: none; }
+.mpanel.is-active { display: block; animation: mfade 0.3s ease; }
+@keyframes mfade { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+.mgrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: clamp(16px, 2vw, 26px);
+}
+.mcard {
+  display: flex;
+  gap: clamp(14px, 1.6vw, 20px);
+  padding: clamp(16px, 1.6vw, 22px);
+  background: #fff;
+  border: 2px solid var(--ink);
+  border-radius: 16px;
+  box-shadow: 6px 8px 0 rgba(10, 10, 10, 0.1);
+}
+.mcard__media {
+  flex: 0 0 clamp(92px, 11vw, 130px);
+  align-self: center;
+  aspect-ratio: 1 / 1;
+  order: 2;
+}
+.mcard__media img { width: 100%; height: 100%; object-fit: contain; }
+.mcard__body { flex: 1; min-width: 0; }
+.mcard__head { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; }
+.mcard__name { font-size: var(--fs-h3); text-transform: uppercase; color: var(--blue); line-height: 1.05; }
+.mcard__price { flex: none; font-family: var(--font-head); font-weight: 700; color: var(--red); font-size: var(--fs-lead); }
+.mcard__desc { margin: 8px 0 0; color: rgba(10, 10, 10, 0.68); font-size: var(--fs-sm); line-height: 1.5; }
+.mcard__tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 12px; }
+.mcard__badge {
+  font-family: var(--font-head);
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 0.72rem;
+  letter-spacing: 0.03em;
+  padding: 4px 10px;
+  border-radius: 999px;
+  background: rgba(0, 85, 184, 0.1);
+  color: var(--blue);
+}
+.mcard__badge--veg { background: rgba(60, 150, 50, 0.14); color: #2f7a27; }
+@media (max-width: 720px) {
+  .mgrid { grid-template-columns: 1fr; }
+}
+@media (max-width: 420px) {
+  .mcard { flex-direction: column; }
+  .mcard__media { order: 0; flex-basis: auto; width: clamp(110px, 40vw, 160px); margin: 0 auto; }
+  .mcard__head { flex-direction: column; gap: 2px; }
+}
