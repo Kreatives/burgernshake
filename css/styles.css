@@ -84,8 +84,8 @@ h1, h2, h3,
 .kicker {
   display: inline-block;
   font-weight: 700;
-  font-size: var(--fs-sm);
-  letter-spacing: 0.02em;
+  font-size: clamp(1rem, 1.35vw, 1.2rem);
+  letter-spacing: 0.04em;
   text-transform: uppercase;
   color: var(--red);
 }
