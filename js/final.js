@@ -6,7 +6,7 @@
    globals of dubbele kaart-initialisatie.
    ============================================================ */
 
-console.log("%cBurger 'n Shake — final.js v10 geladen", "color:#0055B8;font-weight:bold");
+console.log("%cBurger 'n Shake — final.js v11 geladen", "color:#0055B8;font-weight:bold");
 
 const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
@@ -252,24 +252,22 @@ if (window.gsap && window.ScrollTrigger) {
   });
 }
 
-/* ---------- halal-band: rijen scroll-gestuurd tegengesteld ---------- */
-if (window.gsap && window.ScrollTrigger && !reduceMotion) {
+/* ---------- halal-band: doorlopende marquee (rijen tegengesteld) ---------- */
+if (window.gsap) {
   gsap.utils.toArray(".hmarquee-row").forEach((row, i) => {
     const track = row.querySelector(".hmarquee-track");
     if (!track) return;
+    const gap = parseFloat(getComputedStyle(track).columnGap) || 0;
+    const setWidth = track.scrollWidth + gap;
     const original = track.innerHTML;
-    let guard = 0;
-    while (track.scrollWidth < window.innerWidth * 4 && guard < 20) {
-      track.innerHTML += original;
-      guard++;
-    }
-    const overflow = track.scrollWidth - row.offsetWidth;
-    const base = -overflow / 2;
-    const shift = Math.min(window.innerWidth * 0.22, overflow / 2 - 40);
-    const dir = i === 0 ? 1 : -1;
-    gsap.fromTo(track, { x: base + dir * shift }, {
-      x: base - dir * shift, ease: "none",
-      scrollTrigger: { trigger: ".hmarquee", start: "top bottom", end: "bottom top", scrub: true },
+    const copies = Math.ceil(row.offsetWidth / setWidth) + 2;
+    let html = original;
+    for (let c = 1; c < copies; c++) html += original;
+    track.innerHTML = html;
+    if (reduceMotion) return;
+    const dir = i === 0 ? -1 : 1;
+    gsap.fromTo(track, { x: dir < 0 ? 0 : -setWidth }, {
+      x: dir < 0 ? -setWidth : 0, duration: setWidth / 55, ease: "none", repeat: -1,
     });
   });
 }
