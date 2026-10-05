@@ -469,6 +469,69 @@ if (window.gsap && !reduceMotion) {
   );
 })();
 
+/* ---------- menu-pagina: carousel per categorie (zoals franchise-stappen) ---------- */
+(function menuSliders() {
+  const tracks = Array.from(document.querySelectorAll("[data-mtrack]"));
+  if (!tracks.length) return;
+
+  const instances = tracks.map((track) => {
+    const slider = track.closest(".mslider");
+    const nav = slider && slider.querySelector(".mslider__nav");
+    const prev = slider && slider.querySelector('[data-mdir="prev"]');
+    const next = slider && slider.querySelector('[data-mdir="next"]');
+
+    const stepSize = () => {
+      const card = track.querySelector(".mcard");
+      const gap = parseFloat(getComputedStyle(track).columnGap) || 24;
+      return card ? card.offsetWidth + gap : 320;
+    };
+    const update = () => {
+      const max = track.scrollWidth - track.clientWidth - 2;
+      const noScroll = max <= 2;
+      if (nav) nav.hidden = noScroll;            // pijltjes alleen tonen als er iets 'uitloopt'
+      if (prev) prev.disabled = noScroll || track.scrollLeft <= 2;
+      if (next) next.disabled = noScroll || track.scrollLeft >= max;
+    };
+    if (prev) prev.addEventListener("click", () => track.scrollBy({ left: -stepSize(), behavior: "smooth" }));
+    if (next) next.addEventListener("click", () => track.scrollBy({ left: stepSize(), behavior: "smooth" }));
+    track.addEventListener("scroll", update, { passive: true });
+
+    /* sleep-to-scroll met de muis */
+    let down = false, startX = 0, startLeft = 0, moved = 0;
+    track.addEventListener("pointerdown", (e) => {
+      if (e.pointerType === "touch") return;
+      down = true; startX = e.clientX; startLeft = track.scrollLeft; moved = 0;
+      track.classList.add("is-dragging");
+    });
+    window.addEventListener("pointermove", (e) => {
+      if (!down) return;
+      moved = e.clientX - startX;
+      track.scrollLeft = startLeft - moved;
+    });
+    window.addEventListener("pointerup", () => {
+      if (!down) return;
+      down = false;
+      track.classList.remove("is-dragging");
+    });
+    track.addEventListener("click", (e) => {
+      if (Math.abs(moved) > 6) { e.preventDefault(); e.stopPropagation(); }
+    }, true);
+
+    return { update };
+  });
+
+  const updateAll = () => instances.forEach((i) => i.update());
+  window.addEventListener("resize", updateAll);
+  window.addEventListener("load", updateAll);
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(updateAll);
+
+  /* na tabwissel is een ander (eerder verborgen) paneel zichtbaar: herbereken */
+  const tabsBar = document.querySelector("[data-mtabs]");
+  if (tabsBar) tabsBar.addEventListener("click", () => requestAnimationFrame(updateAll));
+
+  updateAll();
+})();
+
 /* ---------- ScrollTrigger herberekenen na laden fonts/beeld/video ---------- */
 if (window.gsap && window.ScrollTrigger) {
   const refresh = () => ScrollTrigger.refresh();
