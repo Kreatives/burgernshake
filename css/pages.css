@@ -1362,6 +1362,7 @@
 .mtabs {
   display: flex;
   gap: 10px;
+  justify-content: safe center;
   overflow-x: auto;
   padding-bottom: 6px;
   margin-bottom: clamp(28px, 4vw, 44px);
@@ -1409,12 +1410,13 @@
 .menu-tabs .mtrack {
   display: flex;
   gap: clamp(18px, 2.2vw, 30px);
-  /* full-bleed: de kaarten lopen aan de rechterkant het scherm uit (zoals het
-     franchise-stappenplan). De eerste kaart lijnt uit met de tabs/koptekst,
-     i.p.v. afgeknipt te worden op de content-marge. */
+  /* full-bleed met symmetrische padding + 'safe center': categorieën die passen
+     staan gecentreerd; categorieën die niet passen lopen aan de rechterkant het
+     scherm uit en zijn scrollbaar (zoals het franchise-stappenplan). */
+  justify-content: safe center;
   margin-left: calc(50% - 50vw);
   margin-right: calc(50% - 50vw);
-  padding-left: calc(50vw - 50%);
+  padding-left: clamp(20px, 4vw, 48px);
   padding-right: clamp(20px, 4vw, 48px);
   padding-top: 18px;
   padding-bottom: 24px;
@@ -1466,6 +1468,9 @@
   transition: transform 0.35s ease;
 }
 .menu-tabs .mcard:hover .mcard__media img { transform: translateY(-4px) scale(1.05); }
+/* 'Mixe it up' heeft een witte achtergrond in de PNG: laat die wegvallen tegen
+   de lichte kaart (multiply) en haal de rechthoekige drop-shadow weg. */
+.menu-tabs .mcard__media img[src*="mixe-it-up"] { mix-blend-mode: multiply; filter: none; }
 .menu-tabs .mcard__body { flex: 1; min-width: 0; margin-top: 12px; display: flex; flex-direction: column; }
 .menu-tabs .mcard__head { display: block; }
 .menu-tabs .mcard__name {
